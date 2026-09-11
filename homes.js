@@ -14,8 +14,8 @@ window.HOMES = [
     garden:true, garage:true, city:false, top:true, status:'molto-interessante', rating:'9/10',
     tags:['3 camere','Giardino ~200 m²','Box doppio','3+ bagni'],
     note:'Per ora una delle più centrate sui vostri criteri: tre camere, tre bagni, giardino su tre lati e autorimessa doppia.',
-    warning:'Posizione indicativa sulla via.',
-    url:'https://www.immobiliare.it/annunci/130941422/'
+    warning:'Posizione indicativa sulla via. Link aggiornato a una copia attiva dell’annuncio su Idealista.',
+    url:'https://www.idealista.it/immobile/36096025/'
   },
   {
     id:'seriate', name:'Seriate · Via Tagliamento', lat:45.6846, lng:9.7229,
@@ -50,8 +50,8 @@ window.HOMES = [
     garden:true, garage:true, city:false, top:false, status:'interessante', rating:'7,5/10',
     tags:['4 camere','Giardino ~150 m²','Garage'],
     note:'Molto spazio già pronto per una famiglia, ma più lontana e quasi al tetto del budget.',
-    warning:'Posizione approssimativa a livello comunale.',
-    url:'https://www.immobiliare.it/annunci/131068386/'
+    warning:'Posizione approssimativa a livello comunale. Link aggiornato a una copia attiva dell’annuncio su TrovaCasa.',
+    url:'https://www.trovacasa.it/annunci/bg-tc-5298-71646226'
   },
   {
     id:'valverde45', name:'Bergamo · Via Valverde 45', lat:45.712032, lng:9.659315,
