@@ -52,5 +52,14 @@ window.HOMES = [
     note:'Molto spazio già pronto per una famiglia, ma più lontana e quasi al tetto del budget.',
     warning:'Posizione approssimativa a livello comunale.',
     url:'https://www.immobiliare.it/annunci/131068386/'
+  },
+  {
+    id:'valverde45', name:'Bergamo · Via Valverde 45', lat:45.712032, lng:9.659315,
+    price:380000, type:'Terratetto / bifamiliare', sqm:'189 m²', beds:3,
+    garden:true, garage:true, city:true, top:false, status:'da-valutare', rating:'7/10',
+    tags:['3 camere','3 bagni','Giardino','Box + 3 posti auto','Segnalata da Camilla','Fuori parametri'],
+    note:'Soluzione semindipendente in Valverde, ai piedi di Città Alta, con tre camere, tre bagni, spazio esterno e posti auto. Non rientra nei parametri economici attuali: richiesta €380.000, quindi circa €20.000 sopra il tetto massimo di €360.000.',
+    warning:'FUORI PARAMETRI: prezzo superiore al budget massimo. Da considerare solo in caso di trattativa significativa. L’annuncio indica anche €167/mese di spese condominiali e classe energetica G.',
+    url:'https://www.immobiliare.it/annunci/126966607/'
   }
 ];
