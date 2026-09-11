@@ -54,13 +54,13 @@ window.HOMES = [
     url:'https://www.immobiliare.it/annunci/131749644/'
   },
   {
-    id:'dalmine', name:'Dalmine', lat:45.6492, lng:9.6063,
+    id:'dalmine', name:'Dalmine · Mariano al Brembo', lat:45.6492, lng:9.6063,
     price:355000, type:'Villa di testa', sqm:'190 m²', beds:4,
     garden:true, garage:true, city:false, top:false, status:'interessante', rating:'7,5/10',
-    tags:['4 camere','Giardino ~150 m²','Garage'],
-    note:'Molto spazio già pronto per una famiglia, ma più lontana e quasi al tetto del budget.',
-    warning:'Posizione approssimativa a livello comunale. Il pulsante ora apre la scheda attiva su Casa.it.',
-    url:'https://www.casa.it/immobili/53935544/'
+    tags:['4 camere','Giardino ~150 m²','Box doppio','3 bagni','Classe C','Annuncio attivo'],
+    note:'Villa di testa libera su tre lati, edificata nel 2003, con quattro camere, giardino di circa 150 m², locale hobby/lavanderia e autorimessa doppia. Molto spazio già pronto per una famiglia, ma più lontana e quasi al tetto del budget.',
+    warning:'ANNUNCIO ATTIVO: verificato su Immobiliare.it, riferimento V006743. Posizione approssimativa a livello comunale; l’inserzionista non pubblica il civico esatto.',
+    url:'https://www.immobiliare.it/annunci/131068386/'
   },
   {
     id:'valverde45', name:'Bergamo · Via Valverde 45', lat:45.712032, lng:9.659315,
