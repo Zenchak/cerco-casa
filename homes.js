@@ -9,12 +9,12 @@ window.HOMES = [
     url:'https://www.immobiliare.it/annunci/121237730/'
   },
   {
-    id:'treviolo-old', name:'Treviolo · vecchio annuncio', lat:45.6738, lng:9.6138,
+    id:'treviolo305', name:'Treviolo · villa di testa', lat:45.6738, lng:9.6138,
     price:305000, type:'Villa di testa', sqm:'162 m²', beds:3,
-    garden:true, garage:true, city:false, top:false, status:'non-disponibile', rating:'9/10 (storico)',
-    tags:['3 camere','Giardino ~200 m²','Box doppio','3+ bagni','Annuncio non disponibile'],
-    note:'Era una delle proposte più centrate sui vostri criteri, ma l’annuncio originario da 305.000 € / 162 m² non risulta più disponibile.',
-    warning:'NON DISPONIBILE: la pagina dell’agenzia mostra ormai solo immobili simili. La tengo in archivio come riferimento di confronto.',
+    garden:true, garage:true, city:false, top:true, status:'molto-interessante', rating:'9/10',
+    tags:['3 camere','Giardino ~200 m²','Box doppio','3+ bagni','Annuncio attivo'],
+    note:'Una delle proposte più centrate sui vostri criteri: tre camere, più bagni, giardino su tre lati e autorimessa doppia.',
+    warning:'ANNUNCIO ATTIVO: verificato dalla pagina diretta dell’agenzia Eustacchio Immobiliare. Posizione indicativa sulla via.',
     url:'https://eustacchioimmobiliare.it/immobili/vendita/villa-di-testa/treviolo/41148.html'
   },
   {
@@ -22,7 +22,7 @@ window.HOMES = [
     price:315000, type:'Villa di testa', sqm:'240 m²', beds:3,
     garden:true, garage:true, city:false, top:true, status:'molto-interessante', rating:'9/10?',
     tags:['3 camere','3 bagni','Giardino ~180 m²','Box doppio 40 m²','Taverna','1988'],
-    note:'Nuova proposta distinta dalla precedente: circa 240 m² su due livelli più interrato, 180 m² di giardino su tre lati, tre camere, tre bagni, taverna, cantina e box doppio. A 315.000 € è molto in linea con quello che cercate.',
+    note:'Proposta distinta dalla precedente: circa 240 m² su due livelli più interrato, 180 m² di giardino su tre lati, tre camere, tre bagni, taverna, cantina e box doppio. A 315.000 € è molto in linea con quello che cercate.',
     warning:'Annuncio attivo. Il civico è pubblicato; il pin è indicativo. Classe E, IPE 154,84 kWh/m²a.',
     url:'https://eustacchioimmobiliare.it/immobili/vendita/villa-di-testa/treviolo/39744.html'
   },
