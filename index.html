@@ -10,38 +10,26 @@
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   <style>
-    :root{--bg:#f7f5f1;--card:#fff;--text:#222;--muted:#6f6a63;--accent:#1f6f5f;--accent2:#174f44;--line:#ded8d0;--chip:#ece7df;--warn:#a5641c;--good:#246b4a}
+    :root{--bg:#f7f5f1;--card:#fff;--text:#222;--muted:#6f6a63;--accent:#1f6f5f;--line:#ded8d0;--chip:#ece7df;--warn:#a5641c}
     *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
     header{padding:16px 16px 10px;position:sticky;top:0;background:rgba(247,245,241,.96);backdrop-filter:blur(10px);z-index:1000;border-bottom:1px solid var(--line)}
     h1{font-size:22px;margin:0 0 3px}.sub{color:var(--muted);font-size:14px}.topline{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.addbtn{border:0;border-radius:12px;background:var(--accent);color:#fff;font-weight:700;padding:10px 12px;min-height:42px;white-space:nowrap;font-size:14px}
-    .filters{display:flex;gap:8px;overflow:auto;padding:10px 0 2px;-webkit-overflow-scrolling:touch}.filters button,.filters select{min-height:42px;border:1px solid var(--line);border-radius:999px;background:white;padding:0 13px;font-size:15px;white-space:nowrap;color:var(--text)}.filters .active{background:var(--accent);color:white;border-color:var(--accent)}
-    #map{height:48vh;min-height:340px;border-bottom:1px solid var(--line)}
-    .wrap{max-width:1100px;margin:0 auto}.summary{padding:12px 16px 0;color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:1fr;gap:12px;padding:12px 16px 30px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px}.card h2{font-size:18px;margin:0 0 4px}.price{font-weight:700;font-size:18px}.meta{color:var(--muted);font-size:14px;margin:4px 0 10px}.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.chip{font-size:12px;background:var(--chip);padding:5px 8px;border-radius:999px}.rating{font-weight:700;color:var(--accent)}.note{font-size:14px;line-height:1.4}.actions{display:flex;gap:8px;margin-top:12px}.actions a{flex:1;text-align:center;text-decoration:none;padding:11px;border-radius:12px;font-weight:600;min-height:44px}.primary{background:var(--accent);color:white}.secondary{border:1px solid var(--line);color:var(--text);background:#fff}.warning{color:var(--warn);font-weight:600}.hidden{display:none!important}.leaflet-popup-content{margin:12px 14px;min-width:220px}.leaflet-popup-content h3{margin:0 0 4px}.leaflet-control-attribution{font-size:9px}
-    dialog{border:0;border-radius:20px;padding:0;width:min(92vw,520px);box-shadow:0 20px 60px rgba(0,0,0,.25)}dialog::backdrop{background:rgba(0,0,0,.42)}.modal{padding:18px}.modal h2{margin:0 0 4px;font-size:21px}.modal p{margin:0 0 16px;color:var(--muted);font-size:14px;line-height:1.4}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:13px;font-weight:700}.field input,.field select,.field textarea{width:100%;font:inherit;font-size:16px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:11px 12px;color:var(--text)}.field textarea{min-height:90px;resize:vertical}.modal-actions{display:flex;gap:8px;margin-top:16px}.modal-actions button{min-height:44px;border-radius:12px;padding:0 14px;font:inherit;font-weight:700}.send{background:var(--accent);color:#fff;border:0;flex:1}.cancel{background:#fff;border:1px solid var(--line)}.small{font-size:12px;color:var(--muted)}
+    .filters{display:flex;gap:8px;overflow:auto;padding:10px 0 2px;-webkit-overflow-scrolling:touch}.filters button,.filters select{min-height:42px;border:1px solid var(--line);border-radius:999px;background:white;padding:0 13px;font-size:15px;white-space:nowrap;color:var(--text)}.filters .active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    #map{height:48vh;min-height:340px;border-bottom:1px solid var(--line)}.wrap{max-width:1100px;margin:0 auto}.summary{padding:12px 16px 0;color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:1fr;gap:12px;padding:12px 16px 30px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px}.card h2{font-size:18px;margin:0 0 4px}.price{font-weight:700;font-size:18px}.meta{color:var(--muted);font-size:14px;margin:4px 0 10px}.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.chip{font-size:12px;background:var(--chip);padding:5px 8px;border-radius:999px}.rating{font-weight:700;color:var(--accent)}.note{font-size:14px;line-height:1.4}.warning{color:var(--warn);font-weight:600}
+    .actions{display:flex;gap:8px;margin-top:12px}.actions a,.actions button{flex:1;text-align:center;text-decoration:none;padding:11px;border-radius:12px;font:inherit;font-weight:600;min-height:44px}.primary{background:var(--accent);color:#fff;border:1px solid var(--accent)}.secondary{border:1px solid var(--line);color:var(--text);background:#fff}
+    .user-notes{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.user-notes-title{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px;font-weight:700;margin-bottom:8px}.note-list{display:grid;gap:7px}.note-item{background:#f5f2ed;border-radius:12px;padding:9px 10px}.note-head{font-size:11px;color:var(--muted);margin-bottom:3px}.note-text{font-size:13px;line-height:1.35;white-space:pre-wrap}.no-notes{font-size:12px;color:var(--muted)}
+    .hidden{display:none!important}.leaflet-popup-content{margin:12px 14px;min-width:220px}.leaflet-popup-content h3{margin:0 0 4px}.leaflet-control-attribution{font-size:9px}
+    dialog{border:0;border-radius:20px;padding:0;width:min(92vw,520px);box-shadow:0 20px 60px rgba(0,0,0,.25)}dialog::backdrop{background:rgba(0,0,0,.42)}.modal{padding:18px}.modal h2{margin:0 0 4px;font-size:21px}.modal p{margin:0 0 16px;color:var(--muted);font-size:14px;line-height:1.4}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:13px;font-weight:700}.field input,.field select,.field textarea{width:100%;font:inherit;font-size:16px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:11px 12px;color:var(--text)}.field textarea{min-height:100px;resize:vertical}.modal-actions{display:flex;gap:8px;margin-top:16px}.modal-actions button{min-height:44px;border-radius:12px;padding:0 14px;font:inherit;font-weight:700}.send{background:var(--accent);color:#fff;border:0;flex:1}.cancel{background:#fff;border:1px solid var(--line)}.small{font-size:12px;color:var(--muted)}
     @media(min-width:760px){#map{height:56vh}.grid{grid-template-columns:repeat(2,1fr)}header{padding-left:24px;padding-right:24px}.summary{padding-left:24px}.grid{padding-left:24px;padding-right:24px}.addbtn{font-size:15px}}
   </style>
 </head>
 <body>
   <header><div class="wrap">
-    <div class="topline">
-      <div><h1>🏡 Cerco Casa</h1><div class="sub">Bogdan & Camilla · budget casa max €360k</div></div>
-      <button class="addbtn" id="openSuggest" type="button">＋ Segnala casa</button>
-    </div>
+    <div class="topline"><div><h1>🏡 Cerco Casa</h1><div class="sub">Bogdan & Camilla · budget casa max €360k</div></div><button class="addbtn" id="openSuggest" type="button">＋ Segnala casa</button></div>
     <div class="filters">
-      <button data-filter="all" class="active">Tutte</button>
-      <button data-filter="top">Preferite</button>
-      <button data-filter="city">Bergamo città</button>
-      <button data-filter="garage">Garage</button>
-      <button data-filter="garden">Giardino</button>
-      <button data-filter="3bed">3+ camere</button>
-      <select id="statusFilter" aria-label="Stato">
-        <option value="all">Tutti gli stati</option>
-        <option value="molto-interessante">Molto interessante</option>
-        <option value="interessante">Interessante</option>
-        <option value="da-valutare">Da valutare</option>
-        <option value="non-disponibile">Non disponibile</option>
-        <option value="scartata">Scartata</option>
-      </select>
+      <button data-filter="all" class="active">Tutte</button><button data-filter="top">Preferite</button><button data-filter="city">Bergamo città</button><button data-filter="garage">Garage</button><button data-filter="garden">Giardino</button><button data-filter="3bed">3+ camere</button>
+      <select id="statusFilter" aria-label="Stato"><option value="all">Tutti gli stati</option><option value="molto-interessante">Molto interessante</option><option value="interessante">Interessante</option><option value="da-valutare">Da valutare</option><option value="non-disponibile">Non disponibile</option><option value="scartata">Scartata</option></select>
     </div>
   </div></header>
 
@@ -51,40 +39,60 @@
   <dialog id="suggestDialog">
     <form class="modal" name="segnala-casa" method="POST" data-netlify="true" action="/grazie.html">
       <input type="hidden" name="form-name" value="segnala-casa" />
-      <h2>Segnala una casa</h2>
-      <p>Incolla il link dell'annuncio. La segnalazione resta nella coda del sito e verrà analizzata prima di entrare nella mappa.</p>
+      <h2>Segnala una casa</h2><p>Incolla il link dell'annuncio. La segnalazione verrà analizzata e aggiunta alla mappa.</p>
       <div class="field"><label for="listingUrl">Link annuncio *</label><input id="listingUrl" name="url" type="url" required placeholder="https://www.immobiliare.it/annunci/…" autocomplete="url" /></div>
       <div class="field"><label for="sender">Segnalata da *</label><select id="sender" name="segnalata-da" required><option value="Camilla">Camilla</option><option value="Bogdan">Bogdan</option></select></div>
       <div class="field"><label for="priority">Priorità</label><select id="priority" name="priorita"><option value="Normale">Normale</option><option value="Da guardare subito">Da guardare subito</option></select></div>
-      <div class="field"><label for="note">Nota</label><textarea id="note" name="nota" placeholder="Es. mi piace il giardino, controlla la zona…"></textarea></div>
-      <div class="small">Non servono account o login. Il modulo invia solo questi dati al progetto Netlify.</div>
+      <div class="field"><label for="suggestNote">Nota</label><textarea id="suggestNote" name="nota" placeholder="Es. mi piace il giardino, controlla la zona…"></textarea></div>
       <div class="modal-actions"><button class="cancel" id="closeSuggest" type="button">Annulla</button><button class="send" type="submit">Invia segnalazione</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="noteDialog">
+    <form class="modal" id="noteForm">
+      <input type="hidden" id="noteHomeId" />
+      <h2>📝 Aggiungi nota</h2><p id="noteHomeName"></p>
+      <div class="field"><label for="noteAuthor">Scritta da</label><select id="noteAuthor" required><option value="Bogdan">Bogdan</option><option value="Camilla">Camilla</option></select></div>
+      <div class="field"><label for="noteText">Nota *</label><textarea id="noteText" required maxlength="1000" placeholder="Es. zona molto bella, cucina da rifare, chiamare l'agenzia…"></textarea></div>
+      <div class="small">Le note sono condivise: le vedrete entrambi anche da dispositivi diversi.</div>
+      <div class="modal-actions"><button class="cancel" id="closeNote" type="button">Annulla</button><button class="send" id="saveNote" type="submit">Salva nota</button></div>
     </form>
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="/homes.js"></script>
   <script>
-  const homes=window.HOMES||[];
-  const map=L.map('map',{zoomControl:true}).setView([45.684,9.67],11);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
-  const markers=new Map();
-  const euro=v=>new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
-  function popup(h){return `<h3>${h.name}</h3><b>${euro(h.price)}</b><div style="margin:4px 0 8px;color:#666">${h.type} · ${h.sqm}</div><div>${h.note}</div><div style="margin-top:8px"><a href="${h.url}">Apri annuncio</a></div>`}
-  homes.forEach(h=>{const m=L.marker([h.lat,h.lng]).addTo(map).bindPopup(popup(h));markers.set(h.id,m)});
-  const cards=document.getElementById('cards'),summary=document.getElementById('summary'),statusFilter=document.getElementById('statusFilter');
-  let active='all';
-  function matches(h){let ok=true;if(active==='top')ok=h.top;if(active==='city')ok=h.city;if(active==='garage')ok=h.garage;if(active==='garden')ok=h.garden;if(active==='3bed')ok=h.beds>=3;if(statusFilter.value!=='all')ok=ok&&h.status===statusFilter.value;return ok}
-  function render(){cards.innerHTML='';const visible=homes.filter(matches);summary.textContent=`${visible.length} ${visible.length===1?'casa':'case'} visibili`;
-    homes.forEach(h=>{const m=markers.get(h.id);if(matches(h)){if(!map.hasLayer(m))m.addTo(map)}else if(map.hasLayer(m))map.removeLayer(m)});
-    visible.forEach(h=>{const el=document.createElement('article');el.className='card';el.innerHTML=`<div style="display:flex;justify-content:space-between;gap:12px"><div><h2>${h.name}</h2><div class="meta">${h.type} · ${h.sqm}</div></div><div class="price">${euro(h.price)}</div></div><div class="chips">${h.tags.map(t=>`<span class="chip">${t}</span>`).join('')}<span class="chip rating">${h.rating}</span></div><div class="note">${h.note}</div><div class="warning" style="font-size:12px;margin-top:8px">${h.warning}</div><div class="actions"><a class="secondary" href="#map" data-map="${h.id}">Mappa</a><a class="primary" href="${h.url}">Annuncio</a></div>`;cards.appendChild(el)});
-    cards.querySelectorAll('[data-map]').forEach(a=>a.addEventListener('click',()=>{const h=homes.find(x=>x.id===a.dataset.map);setTimeout(()=>{map.setView([h.lat,h.lng],15);markers.get(h.id).openPopup()},100)}));
-  }
-  document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{active=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));render()}));statusFilter.addEventListener('change',render);render();
-  const dlg=document.getElementById('suggestDialog');
-  document.getElementById('openSuggest').addEventListener('click',()=>dlg.showModal());
-  document.getElementById('closeSuggest').addEventListener('click',()=>dlg.close());
-  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+    const homes=window.HOMES||[];
+    const map=L.map('map',{zoomControl:true}).setView([45.684,9.67],11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+    const markers=new Map();
+    const euro=v=>new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
+    function popup(h){return `<h3>${h.name}</h3><b>${euro(h.price)}</b><div style="margin:4px 0 8px;color:#666">${h.type} · ${h.sqm}</div><div>${h.note}</div><div style="margin-top:8px"><a href="${h.url}">Apri annuncio</a></div>`}
+    homes.forEach(h=>{const m=L.marker([h.lat,h.lng]).addTo(map).bindPopup(popup(h));markers.set(h.id,m)});
+
+    const cards=document.getElementById('cards'),summary=document.getElementById('summary'),statusFilter=document.getElementById('statusFilter');
+    let active='all', sharedNotes={};
+    function matches(h){let ok=true;if(active==='top')ok=h.top;if(active==='city')ok=h.city;if(active==='garage')ok=h.garage;if(active==='garden')ok=h.garden;if(active==='3bed')ok=h.beds>=3;if(statusFilter.value!=='all')ok=ok&&h.status===statusFilter.value;return ok}
+    function formatDate(iso){try{return new Intl.DateTimeFormat('it-IT',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'}).format(new Date(iso))}catch{return ''}}
+    function fillNotes(homeId){const box=document.querySelector(`[data-notes-for="${homeId}"]`);if(!box)return;box.innerHTML='';const notes=sharedNotes[homeId]||[];if(!notes.length){const e=document.createElement('div');e.className='no-notes';e.textContent='Nessuna nota ancora.';box.appendChild(e);return}notes.slice().reverse().forEach(n=>{const item=document.createElement('div');item.className='note-item';const head=document.createElement('div');head.className='note-head';head.textContent=`${n.author} · ${formatDate(n.createdAt)}`;const text=document.createElement('div');text.className='note-text';text.textContent=n.text;item.append(head,text);box.appendChild(item)})}
+    function render(){cards.innerHTML='';const visible=homes.filter(matches);summary.textContent=`${visible.length} ${visible.length===1?'casa':'case'} visibili`;
+      homes.forEach(h=>{const m=markers.get(h.id);if(matches(h)){if(!map.hasLayer(m))m.addTo(map)}else if(map.hasLayer(m))map.removeLayer(m)});
+      visible.forEach(h=>{const el=document.createElement('article');el.className='card';el.innerHTML=`<div style="display:flex;justify-content:space-between;gap:12px"><div><h2>${h.name}</h2><div class="meta">${h.type} · ${h.sqm}</div></div><div class="price">${euro(h.price)}</div></div><div class="chips">${h.tags.map(t=>`<span class="chip">${t}</span>`).join('')}<span class="chip rating">${h.rating}</span></div><div class="note">${h.note}</div><div class="warning" style="font-size:12px;margin-top:8px">${h.warning}</div><div class="actions"><a class="secondary" href="#map" data-map="${h.id}">Mappa</a><a class="primary" href="${h.url}">Annuncio</a><button class="secondary" type="button" data-add-note="${h.id}">＋ Nota</button></div><div class="user-notes"><div class="user-notes-title"><span>Note vostre</span><span>${(sharedNotes[h.id]||[]).length}</span></div><div class="note-list" data-notes-for="${h.id}"></div></div>`;cards.appendChild(el);fillNotes(h.id)});
+      cards.querySelectorAll('[data-map]').forEach(a=>a.addEventListener('click',()=>{const h=homes.find(x=>x.id===a.dataset.map);setTimeout(()=>{map.setView([h.lat,h.lng],15);markers.get(h.id).openPopup()},100)}));
+      cards.querySelectorAll('[data-add-note]').forEach(b=>b.addEventListener('click',()=>openNoteDialog(b.dataset.addNote)));
+    }
+    async function loadNotes(){try{const r=await fetch('/api/notes',{cache:'no-store'});if(r.ok){sharedNotes=await r.json();render()}}catch(e){console.warn('Note non disponibili',e)}}
+
+    document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{active=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));render()}));
+    statusFilter.addEventListener('change',render);render();loadNotes();
+
+    const suggestDlg=document.getElementById('suggestDialog');document.getElementById('openSuggest').addEventListener('click',()=>suggestDlg.showModal());document.getElementById('closeSuggest').addEventListener('click',()=>suggestDlg.close());suggestDlg.addEventListener('click',e=>{if(e.target===suggestDlg)suggestDlg.close()});
+
+    const noteDlg=document.getElementById('noteDialog'),noteForm=document.getElementById('noteForm'),noteText=document.getElementById('noteText'),noteAuthor=document.getElementById('noteAuthor'),saveNote=document.getElementById('saveNote');
+    const savedAuthor=localStorage.getItem('note-author');if(savedAuthor==='Bogdan'||savedAuthor==='Camilla')noteAuthor.value=savedAuthor;
+    function openNoteDialog(homeId){const h=homes.find(x=>x.id===homeId);if(!h)return;document.getElementById('noteHomeId').value=homeId;document.getElementById('noteHomeName').textContent=h.name;noteText.value='';noteDlg.showModal();setTimeout(()=>noteText.focus(),100)}
+    document.getElementById('closeNote').addEventListener('click',()=>noteDlg.close());noteDlg.addEventListener('click',e=>{if(e.target===noteDlg)noteDlg.close()});
+    noteForm.addEventListener('submit',async e=>{e.preventDefault();const homeId=document.getElementById('noteHomeId').value,text=noteText.value.trim(),author=noteAuthor.value;if(!text)return;localStorage.setItem('note-author',author);saveNote.disabled=true;saveNote.textContent='Salvo…';try{const r=await fetch('/api/notes',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({homeId,author,text})});if(!r.ok)throw new Error('Errore salvataggio');noteDlg.close();await loadNotes()}catch(err){alert('Non sono riuscito a salvare la nota. Riprova tra poco.')}finally{saveNote.disabled=false;saveNote.textContent='Salva nota'}});
   </script>
 </body>
 </html>
