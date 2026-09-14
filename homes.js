@@ -59,8 +59,8 @@ window.HOMES = [
     garden:true, garage:true, city:false, top:false, status:'interessante', rating:'7,5/10',
     tags:['4 camere','Giardino ~150 m²','Box doppio','3 bagni','Classe C','Annuncio attivo'],
     note:'Villa di testa libera su tre lati, edificata nel 2003, con quattro camere, giardino di circa 150 m², locale hobby/lavanderia e autorimessa doppia. Molto spazio già pronto per una famiglia, ma più lontana e quasi al tetto del budget.',
-    warning:'ANNUNCIO ATTIVO: verificato su Immobiliare.it, riferimento V006743. Posizione approssimativa a livello comunale; l’inserzionista non pubblica il civico esatto.',
-    url:'https://www.immobiliare.it/annunci/131068386/'
+    warning:'ANNUNCIO ATTIVO: riferimento V006743. Casa.it risulta scaduto; il pulsante apre la copia attiva su TrovaCasa, verificata di recente. Posizione approssimativa a livello comunale; l’inserzionista non pubblica il civico esatto.',
+    url:'https://www.trovacasa.it/annunci/bg-tc-5298-71646226'
   },
   {
     id:'valverde45', name:'Bergamo · Via Valverde 45', lat:45.712032, lng:9.659315,
