@@ -20,7 +20,7 @@
     .decision{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:13px}.decision button{border:1px solid var(--line);background:#fff;border-radius:11px;min-height:40px;padding:7px 6px;font:inherit;font-size:12px;font-weight:750;color:var(--text)}.decision button.active[data-pref-value="da-vedere"]{background:#e9f6f0;border-color:#9bcdb8;color:var(--good)}.decision button.active[data-pref-value="da-valutare"]{background:#fff4e8;border-color:#e7c08c;color:var(--eval)}.decision button.active[data-pref-value="ignorare"]{background:#efede9;border-color:#c9c3bc;color:#5f5b56}
     .actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.actions a,.actions button{flex:1;min-width:92px;text-align:center;text-decoration:none;padding:11px;border-radius:12px;font:inherit;font-weight:600;min-height:44px}.primary{background:var(--accent);color:#fff;border:1px solid var(--accent)}.secondary{border:1px solid var(--line);color:var(--text);background:#fff}
     .user-notes{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.user-notes-title{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px;font-weight:700;margin-bottom:8px}.note-list{display:grid;gap:7px}.note-item{background:#f5f2ed;border-radius:12px;padding:9px 10px}.note-head{font-size:11px;color:var(--muted);margin-bottom:3px}.note-text{font-size:13px;line-height:1.35;white-space:pre-wrap}.no-notes{font-size:12px;color:var(--muted)}
-    .empty-section{font-size:13px;color:var(--muted);padding:10px 2px}.hidden{display:none!important}.leaflet-popup-content{margin:12px 14px;min-width:220px}.leaflet-popup-content h3{margin:0 0 4px}.leaflet-control-attribution{font-size:9px}
+    .hidden{display:none!important}.leaflet-popup-content{margin:12px 14px;min-width:220px}.leaflet-popup-content h3{margin:0 0 4px}.leaflet-control-attribution{font-size:9px}
     dialog{border:0;border-radius:20px;padding:0;width:min(92vw,520px);box-shadow:0 20px 60px rgba(0,0,0,.25)}dialog::backdrop{background:rgba(0,0,0,.42)}.modal{padding:18px}.modal h2{margin:0 0 4px;font-size:21px}.modal p{margin:0 0 16px;color:var(--muted);font-size:14px;line-height:1.4}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:13px;font-weight:700}.field input,.field select,.field textarea{width:100%;font:inherit;font-size:16px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:11px 12px;color:var(--text)}.field textarea{min-height:100px;resize:vertical}.modal-actions{display:flex;gap:8px;margin-top:16px}.modal-actions button{min-height:44px;border-radius:12px;padding:0 14px;font:inherit;font-weight:700}.send{background:var(--accent);color:#fff;border:0;flex:1}.cancel{background:#fff;border:1px solid var(--line)}.small{font-size:12px;color:var(--muted)}
     @media(min-width:760px){#map{height:56vh}.section-grid{grid-template-columns:repeat(2,1fr)}header{padding-left:24px;padding-right:24px}.summary{padding-left:24px}.sections{padding-left:24px;padding-right:24px}.addbtn{font-size:15px}}
   </style>
@@ -75,12 +75,20 @@
 
     const sections=document.getElementById('sections'),summary=document.getElementById('summary'),statusFilter=document.getElementById('statusFilter');
     let active='all',sharedNotes={},sharedStates={};
-    const sectionMeta={
-      new:{label:'Nuovi',icon:'🆕'},
-      'da-vedere':{label:'Da vedere',icon:'👀'},
-      'da-valutare':{label:'Da valutare',icon:'🤔'},
-      ignorare:{label:'Ignorare',icon:'🚫'}
-    };
+    const sectionMeta={new:{label:'Nuovi',icon:'🆕'},'da-vedere':{label:'Da vedere',icon:'👀'},'da-valutare':{label:'Da valutare',icon:'🤔'},ignorare:{label:'Ignorare',icon:'🚫'}};
+    const stateKey=homeId=>`state-${homeId}`;
+    function rebuildStates(){
+      sharedStates={};
+      homes.forEach(h=>{
+        const rows=sharedNotes[stateKey(h.id)]||[];
+        for(let i=rows.length-1;i>=0;i--){
+          try{
+            const value=JSON.parse(rows[i].text||'');
+            if(value&&typeof value==='object'){sharedStates[h.id]=value;break}
+          }catch{}
+        }
+      });
+    }
     function houseState(h){return sharedStates[h.id]||{}}
     function preference(h){return houseState(h).preference||'da-valutare'}
     function isNew(h){return !baselineIds.has(h.id)&&!houseState(h).seenAt}
@@ -92,19 +100,25 @@
     function cardHtml(h){const newBadge=isNew(h)?'<span class="new-badge">NEW</span>':'';return `<div style="display:flex;justify-content:space-between;gap:12px"><div><div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap"><h2>${h.name}</h2>${newBadge}</div><div class="meta">${h.type} · ${h.sqm}</div></div><div class="price">${euro(h.price)}</div></div><div class="chips">${h.tags.map(t=>`<span class="chip">${t}</span>`).join('')}<span class="chip rating">${h.rating}</span></div><div class="note">${h.note}</div><div class="warning" style="font-size:12px;margin-top:8px">${h.warning||''}</div><div class="decision">${decisionButton(h,'da-vedere','👀 Da vedere')}${decisionButton(h,'da-valutare','🤔 Valutare')}${decisionButton(h,'ignorare','🚫 Ignora')}</div><div class="actions"><a class="secondary" href="#map" data-map="${h.id}">Mappa</a><a class="primary" href="${h.url}" target="_blank" rel="noopener" data-open-home="${h.id}">Annuncio</a><button class="secondary" type="button" data-add-note="${h.id}">＋ Nota</button></div><div class="user-notes"><div class="user-notes-title"><span>Note vostre</span><span>${(sharedNotes[h.id]||[]).length}</span></div><div class="note-list" data-notes-for="${h.id}"></div></div>`}
     function render(){sections.innerHTML='';const visible=homes.filter(matches);const newCount=visible.filter(isNew).length;summary.textContent=`${visible.length} ${visible.length===1?'casa':'case'} visibili${newCount?` · ${newCount} nuove`:''}`;
       homes.forEach(h=>{const m=markers.get(h.id);if(matches(h)){if(!map.hasLayer(m))m.addTo(map)}else if(map.hasLayer(m))map.removeLayer(m)});
-      const groups={new:[], 'da-vedere':[], 'da-valutare':[], ignorare:[]};visible.forEach(h=>groups[sectionKey(h)].push(h));groups.new.sort((a,b)=>(sourceOrder.get(b.id)||0)-(sourceOrder.get(a.id)||0));
+      const groups={new:[],'da-vedere':[],'da-valutare':[],ignorare:[]};visible.forEach(h=>groups[sectionKey(h)].push(h));groups.new.sort((a,b)=>(sourceOrder.get(b.id)||0)-(sourceOrder.get(a.id)||0));
       ['new','da-vedere','da-valutare','ignorare'].forEach(key=>{const items=groups[key];if(!items.length)return;const block=document.createElement('section');block.className='section-block';const meta=sectionMeta[key];block.innerHTML=`<div class="section-head"><div class="section-title"><span>${meta.icon}</span><span>${meta.label}</span></div><span class="section-count">${items.length}</span></div><div class="section-grid" data-section-grid="${key}"></div>`;sections.appendChild(block);const grid=block.querySelector('[data-section-grid]');items.forEach(h=>{const el=document.createElement('article');el.className=`card${isNew(h)?' is-new':''}${preference(h)==='ignorare'?' is-ignored':''}`;el.innerHTML=cardHtml(h);grid.appendChild(el);fillNotes(h.id)})});
       sections.querySelectorAll('[data-map]').forEach(a=>a.addEventListener('click',()=>{const h=homes.find(x=>x.id===a.dataset.map);setTimeout(()=>{map.setView([h.lat,h.lng],15);markers.get(h.id).openPopup()},100)}));
       sections.querySelectorAll('[data-add-note]').forEach(b=>b.addEventListener('click',()=>openNoteDialog(b.dataset.addNote)));
       sections.querySelectorAll('[data-pref]').forEach(b=>b.addEventListener('click',()=>setPreference(b.dataset.pref,b.dataset.prefValue)));
     }
-    async function loadNotes(){try{const r=await fetch('/api/notes',{cache:'no-store'});if(r.ok){sharedNotes=await r.json();render()}}catch(e){console.warn('Note non disponibili',e)}}
-    async function loadStates(){try{const r=await fetch('/api/state',{cache:'no-store'});if(r.ok){sharedStates=await r.json();render()}}catch(e){console.warn('Stati non disponibili',e)}}
-    async function setPreference(homeId,value){const before=sharedStates[homeId];sharedStates[homeId]={...(before||{}),preference:value,updatedAt:new Date().toISOString()};render();try{const r=await fetch('/api/state',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({homeId,preference:value})});if(!r.ok)throw new Error('Errore salvataggio');sharedStates[homeId]=await r.json();render()}catch(err){if(before)sharedStates[homeId]=before;else delete sharedStates[homeId];render();alert('Non sono riuscito a salvare la valutazione. Riprova tra poco.')}}
-    function markSeen(homeId){const h=homes.find(x=>x.id===homeId);if(!h||baselineIds.has(homeId)||houseState(h).seenAt)return;const now=new Date().toISOString();sharedStates[homeId]={...houseState(h),seenAt:now,updatedAt:now};render();fetch('/api/state',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({homeId,seen:true}),keepalive:true}).then(async r=>{if(r.ok){sharedStates[homeId]=await r.json();render()}}).catch(e=>console.warn('Stato NEW non salvato',e))}
+    async function loadNotes(){try{const r=await fetch('/api/notes',{cache:'no-store'});if(r.ok){sharedNotes=await r.json();rebuildStates();render()}}catch(e){console.warn('Note non disponibili',e)}}
+    function stateAuthor(){const saved=localStorage.getItem('note-author');return saved==='Camilla'?'Camilla':'Bogdan'}
+    async function saveState(homeId,state,keepalive=false){
+      const key=stateKey(homeId),now=new Date().toISOString(),row={author:stateAuthor(),text:JSON.stringify(state),createdAt:now};
+      if(!Array.isArray(sharedNotes[key]))sharedNotes[key]=[];sharedNotes[key].push(row);
+      const r=await fetch('/api/notes',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({homeId:key,author:row.author,text:row.text}),keepalive});
+      if(!r.ok)throw new Error('Errore salvataggio stato');
+    }
+    async function setPreference(homeId,value){const before=sharedStates[homeId];const next={...(before||{}),preference:value,updatedAt:new Date().toISOString()};sharedStates[homeId]=next;render();try{await saveState(homeId,next)}catch(err){if(before)sharedStates[homeId]=before;else delete sharedStates[homeId];render();alert('Non sono riuscito a salvare la valutazione. Riprova tra poco.')}}
+    function markSeen(homeId){const h=homes.find(x=>x.id===homeId);if(!h||baselineIds.has(homeId)||houseState(h).seenAt)return;const before=sharedStates[homeId],now=new Date().toISOString(),next={...(before||{}),seenAt:now,updatedAt:now};sharedStates[homeId]=next;render();saveState(homeId,next,true).catch(e=>{if(before)sharedStates[homeId]=before;else delete sharedStates[homeId];render();console.warn('Stato NEW non salvato',e)})}
 
     document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{active=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));render()}));
-    statusFilter.addEventListener('change',render);document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('[data-open-home]');if(a)markSeen(a.dataset.openHome)});render();loadNotes();loadStates();
+    statusFilter.addEventListener('change',render);document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('[data-open-home]');if(a)markSeen(a.dataset.openHome)});render();loadNotes();
 
     const suggestDlg=document.getElementById('suggestDialog');document.getElementById('openSuggest').addEventListener('click',()=>suggestDlg.showModal());document.getElementById('closeSuggest').addEventListener('click',()=>suggestDlg.close());suggestDlg.addEventListener('click',e=>{if(e.target===suggestDlg)suggestDlg.close()});
 
