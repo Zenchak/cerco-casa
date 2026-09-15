@@ -95,4 +95,46 @@
 
   const duplicateHeaderHome = document.querySelector('.topline a[href="https://nas-bogdan.tailnet-7e32.ts.net:8440"]');
   if (duplicateHeaderHome) duplicateHeaderHome.remove();
+
+  // Profilo attivo scelto nell'Hub. Il cookie funziona anche sulle porte HTTPS private
+  // dello stesso hostname, mentre localStorage è il fallback per l'accesso via Hub.
+  const profileCookieName='zenchack_profile';
+  function readProfile(){
+    const m=document.cookie.match(new RegExp('(?:^|; )'+profileCookieName+'=([^;]*)'));
+    const fromCookie=m?decodeURIComponent(m[1]):'';
+    if(fromCookie==='Bogdan'||fromCookie==='Camilla')return fromCookie;
+    const fromStorage=localStorage.getItem(profileCookieName);
+    return fromStorage==='Camilla'?'Camilla':'Bogdan';
+  }
+  const activeProfile=readProfile();
+  localStorage.setItem('note-author',activeProfile);
+
+  const style=document.createElement('style');
+  style.textContent='.profile-badge{display:inline-flex;align-items:center;gap:5px;margin-top:5px;padding:4px 8px;border-radius:999px;background:#ece7df;color:#5f5a54;font-size:11px;font-weight:800}.reaction-row.profile-other{opacity:.45}.reaction-row.profile-other button{cursor:not-allowed}.reaction-row.profile-mine{outline:1px solid rgba(31,111,95,.18);outline-offset:5px;border-radius:8px}';
+  document.head.appendChild(style);
+
+  function applyProfile(){
+    const sub=document.querySelector('header .sub');
+    if(sub&&!document.getElementById('activeProfileBadge')){
+      const badge=document.createElement('div');
+      badge.id='activeProfileBadge';
+      badge.className='profile-badge';
+      badge.textContent=(activeProfile==='Camilla'?'👩 ':'👨 ')+activeProfile;
+      sub.insertAdjacentElement('afterend',badge);
+    }
+    document.querySelectorAll('[data-pref-author]').forEach(btn=>{
+      const mine=btn.dataset.prefAuthor===activeProfile;
+      btn.disabled=!mine;
+      const row=btn.closest('.reaction-row');
+      if(row){row.classList.toggle('profile-mine',mine);row.classList.toggle('profile-other',!mine)}
+    });
+    const noteAuthor=document.getElementById('noteAuthor');
+    if(noteAuthor){noteAuthor.value=activeProfile;noteAuthor.disabled=true}
+    const sender=document.getElementById('sender');
+    if(sender)sender.value=activeProfile;
+  }
+
+  applyProfile();
+  const observer=new MutationObserver(()=>applyProfile());
+  observer.observe(document.body,{childList:true,subtree:true});
 })();
