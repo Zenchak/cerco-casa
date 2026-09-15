@@ -80,18 +80,24 @@
 
   window.HOMES = fallback;
 
-  try {
-    const xhr = new XMLHttpRequest();
-    const liveUrl = 'https://raw.githubusercontent.com/Zenchak/cerco-casa/main/homes.json?t=' + Date.now();
-    xhr.open('GET', liveUrl, false);
-    xhr.send(null);
-    if (xhr.status >= 200 && xhr.status < 300) {
-      const live = JSON.parse(xhr.responseText);
-      if (Array.isArray(live)) window.HOMES = live;
-    }
-  } catch (err) {
-    console.warn('Dati live GitHub non disponibili: uso la copia inclusa nel sito.', err);
+  function readJson(url){
+    try{
+      const xhr=new XMLHttpRequest();
+      xhr.open('GET',url,false);
+      xhr.send(null);
+      if(xhr.status>=200&&xhr.status<300){
+        const data=JSON.parse(xhr.responseText);
+        return Array.isArray(data)?data:[];
+      }
+    }catch(err){console.warn('Dati GitHub non disponibili',err)}
+    return [];
   }
+
+  const stamp=Date.now();
+  const live=readJson('https://raw.githubusercontent.com/Zenchak/cerco-casa/main/homes.json?t='+stamp);
+  const extra=readJson('https://raw.githubusercontent.com/Zenchak/cerco-casa/main/homes-extra.json?t='+stamp);
+  if(live.length)window.HOMES=live.concat(extra);
+  else if(extra.length)window.HOMES=fallback.concat(extra);
 
   const duplicateHeaderHome = document.querySelector('.topline a[href="https://nas-bogdan.tailnet-7e32.ts.net:8440"]');
   if (duplicateHeaderHome) duplicateHeaderHome.remove();
