@@ -1,6 +1,9 @@
 {
   "name": "cerco-casa",
   "private": true,
+  "scripts": {
+    "validate:homes": "node scripts/validate-homes.mjs"
+  },
   "dependencies": {
     "@netlify/blobs": "latest",
     "@netlify/functions": "latest"
