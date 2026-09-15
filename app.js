@@ -1,4 +1,5 @@
 (() => {
+  const DELETE_SENTINEL = '__ZENCHACK_NOTE_DELETED__';
   const homes = window.HOMES || [];
   const baselineIds = new Set([
     'gerosa','treviolo305','treviolo315','seriate','azzano1','azzano2','dalmine','valverde45',
@@ -163,7 +164,30 @@
         displayText: edit ? edit.text : row.text,
         editedAt: edit ? edit.editedAt : null
       };
-    });
+    }).filter(row => row.displayText !== DELETE_SENTINEL);
+  }
+
+  async function deleteNote(homeId, note) {
+    if (note.author !== stateAuthor()) return;
+    if (!confirm('Eliminare questa nota?')) return;
+    try {
+      const event = {
+        _type: 'note-edit',
+        targetAuthor: note.author,
+        targetCreatedAt: note.createdAt,
+        text: DELETE_SENTINEL,
+        editedAt: new Date().toISOString()
+      };
+      const r = await fetch('/api/notes', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ homeId, author: stateAuthor(), text: JSON.stringify(event) })
+      });
+      if (!r.ok) throw new Error('Errore eliminazione');
+      await loadNotes();
+    } catch (err) {
+      alert('Non sono riuscito a eliminare la nota. Riprova tra poco.');
+    }
   }
 
   function fillNotes(homeId) {
@@ -190,12 +214,32 @@
       head.appendChild(meta);
 
       if (n.author === stateAuthor()) {
+        const tools = document.createElement('span');
+        tools.style.display = 'inline-flex';
+        tools.style.gap = '6px';
+        tools.style.alignItems = 'center';
+
         const edit = document.createElement('button');
         edit.type = 'button';
         edit.className = 'note-edit-btn';
         edit.textContent = '✏️ Modifica';
         edit.addEventListener('click', () => openEditNoteDialog(homeId, n));
-        head.appendChild(edit);
+
+        const del = document.createElement('button');
+        del.type = 'button';
+        del.textContent = '🗑️ Elimina';
+        del.style.border = '0';
+        del.style.background = 'transparent';
+        del.style.color = '#a33';
+        del.style.font = 'inherit';
+        del.style.fontWeight = '800';
+        del.style.padding = '3px 5px';
+        del.style.cursor = 'pointer';
+        del.style.whiteSpace = 'nowrap';
+        del.addEventListener('click', () => deleteNote(homeId, n));
+
+        tools.append(edit, del);
+        head.appendChild(tools);
       }
 
       const text = document.createElement('div');
