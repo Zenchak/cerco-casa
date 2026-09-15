@@ -92,4 +92,7 @@
   } catch (err) {
     console.warn('Dati live GitHub non disponibili: uso la copia inclusa nel sito.', err);
   }
+
+  const duplicateHeaderHome = document.querySelector('.topline a[href="https://nas-bogdan.tailnet-7e32.ts.net:8440"]');
+  if (duplicateHeaderHome) duplicateHeaderHome.remove();
 })();
