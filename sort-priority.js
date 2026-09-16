@@ -1,8 +1,24 @@
 (() => {
-  const sections = document.getElementById('sections');
-  const sortOrder = document.getElementById('sortOrder');
   const homes = window.HOMES || [];
-  if (!sections || !sortOrder || !homes.length) return;
+  if (!window.L || !homes.length) return;
+
+  const capturedMarkers = [];
+  let capturedMap = null;
+
+  const originalMap = L.map;
+  const originalMarker = L.marker;
+
+  L.map = function (...args) {
+    const map = originalMap.apply(this, args);
+    capturedMap = map;
+    return map;
+  };
+
+  L.marker = function (...args) {
+    const marker = originalMarker.apply(this, args);
+    capturedMarkers.push(marker);
+    return marker;
+  };
 
   const byId = new Map(homes.map((h, i) => [h.id, { ...h, _sourceIndex: i }]));
 
@@ -11,8 +27,12 @@
     .global-status-chip{font-weight:800}
     .global-status-chip.see{background:#e9f6f0;color:#147a54}
     .global-status-chip.eval{background:#fff4e8;color:#a5641c}
-    .global-status-chip.ignore{background:#efede9;color:#5f5b56}
+    .global-status-chip.discard{background:#efede9;color:#5f5b56}
     .global-status-chip.new{background:#eee8ff;color:#6b35d7}
+    .discarded-list{margin-top:20px;padding-top:18px;border-top:1px dashed #cfc8bf}
+    .discarded-list .section-title{color:#6f6a63}
+    .discarded-list article.card{opacity:.72}
+    .layout-hidden{display:none!important}
   `;
   document.head.appendChild(style);
 
@@ -29,7 +49,8 @@
   }
 
   function compare(a, b) {
-    const mode = sortOrder.value;
+    const sortOrder = document.getElementById('sortOrder');
+    const mode = sortOrder?.value || 'added-desc';
     let diff = 0;
     if (mode === 'added-asc') diff = addedValue(a) - addedValue(b);
     else if (mode === 'price-asc') diff = (a.price || 0) - (b.price || 0);
@@ -49,72 +70,155 @@
       card.querySelector('[data-pref]')?.dataset.pref || '';
   }
 
-  function cardState(card) {
+  function isDiscarded(card) {
+    const bogdan = card.querySelector('[data-pref-author="Bogdan"][data-pref-value="ignorare"].active');
+    const camilla = card.querySelector('[data-pref-author="Camilla"][data-pref-value="ignorare"].active');
+    return Boolean(bogdan && camilla);
+  }
+
+  function stateFor(card, discarded) {
+    if (discarded) return { text: '🗑️ Scartata', cls: 'discard' };
     if (card.querySelector('.new-badge')) return { text: '🆕 Nuovo', cls: 'new' };
     const active = [...card.querySelectorAll('[data-pref].active')].map(b => b.dataset.prefValue);
-    const ignores = active.filter(v => v === 'ignorare').length;
-    if (ignores >= 2) return { text: '🚫 Ignorare', cls: 'ignore' };
     if (active.includes('da-vedere')) return { text: '👀 Da vedere', cls: 'see' };
     return { text: '🤔 Da valutare', cls: 'eval' };
   }
 
-  function addStateChip(card) {
+  function decorateCard(card, discarded) {
     const chips = card.querySelector('.chips');
-    if (!chips) return;
-    const old = chips.querySelector('.global-status-chip');
-    if (old) old.remove();
-    const state = cardState(card);
-    const chip = document.createElement('span');
-    chip.className = `chip global-status-chip ${state.cls}`;
-    chip.textContent = state.text;
-    chips.prepend(chip);
+    if (chips) {
+      chips.querySelector('.global-status-chip')?.remove();
+      const state = stateFor(card, discarded);
+      const chip = document.createElement('span');
+      chip.className = `chip global-status-chip ${state.cls}`;
+      chip.textContent = state.text;
+      chips.prepend(chip);
+    }
+
+    card.classList.toggle('is-ignored', discarded);
+    const mapButton = card.querySelector('[data-map]');
+    if (mapButton) mapButton.classList.toggle('layout-hidden', discarded);
+    const newBadge = card.querySelector('.new-badge');
+    if (newBadge) newBadge.classList.toggle('layout-hidden', discarded);
   }
 
-  let applying = false;
-  let timer = null;
+  function syncMarker(id, discarded) {
+    if (!capturedMap) return;
+    const home = byId.get(id);
+    if (!home) return;
+    const marker = capturedMarkers[home._sourceIndex];
+    if (!marker) return;
 
-  function applyGlobalSort() {
+    if (discarded) {
+      if (capturedMap.hasLayer(marker)) capturedMap.removeLayer(marker);
+    } else if (!capturedMap.hasLayer(marker)) {
+      marker.addTo(capturedMap);
+    }
+  }
+
+  function makeSection(kind, count) {
+    const block = document.createElement('section');
+    const discarded = kind === 'discarded';
+    block.className = `section-block ${discarded ? 'discarded-list' : 'global-list'}`;
+    block.innerHTML = `<div class="section-head"><div class="section-title"><span>${discarded ? '🗑️' : '🏠'}</span><span>${discarded ? 'Scartate' : 'Annunci'}</span></div><span class="section-count">${count}</span></div><div class="section-grid ${discarded ? 'discarded-grid' : 'global-grid'}"></div>`;
+    return block;
+  }
+
+  function idsIn(selector) {
+    return [...document.querySelectorAll(selector)].map(cardId).filter(Boolean);
+  }
+
+  function sameIds(a, b) {
+    return a.length === b.length && a.every((id, i) => id === b[i]);
+  }
+
+  let timer = null;
+  let applying = false;
+
+  function applyLayout() {
     if (applying) return;
+
+    const sections = document.getElementById('sections');
+    const sortOrder = document.getElementById('sortOrder');
+    const summary = document.getElementById('summary');
+    if (!sections || !sortOrder) return;
+
     const cards = [...sections.querySelectorAll('article.card')];
     if (!cards.length) return;
 
-    // Se siamo già nella lista globale, non ricreiamo il DOM inutilmente.
-    const blocks = [...sections.querySelectorAll(':scope > .section-block')];
-    if (blocks.length === 1 && blocks[0].classList.contains('global-list')) {
-      cards.forEach(addStateChip);
-      return;
+    const rows = cards
+      .map(card => {
+        const id = cardId(card);
+        return { card, id, home: byId.get(id), discarded: isDiscarded(card) };
+      })
+      .filter(x => x.home);
+
+    const normal = rows.filter(x => !x.discarded).sort((a, b) => compare(a.home, b.home));
+    const discarded = rows.filter(x => x.discarded).sort((a, b) => compare(a.home, b.home));
+
+    rows.forEach(({ card, id, discarded }) => {
+      decorateCard(card, discarded);
+      syncMarker(id, discarded);
+    });
+
+    const expectedNormal = normal.map(x => x.id);
+    const expectedDiscarded = discarded.map(x => x.id);
+    const actualNormal = idsIn('#sections > .global-list .global-grid > article.card');
+    const actualDiscarded = idsIn('#sections > .discarded-list .discarded-grid > article.card');
+    const directBlocks = [...sections.querySelectorAll(':scope > .section-block')];
+    const expectedBlocks = (normal.length ? 1 : 0) + (discarded.length ? 1 : 0);
+    const stable = directBlocks.length === expectedBlocks &&
+      sameIds(actualNormal, expectedNormal) && sameIds(actualDiscarded, expectedDiscarded);
+
+    if (!stable) {
+      applying = true;
+      try {
+        const fragment = document.createDocumentFragment();
+        if (normal.length) {
+          const block = makeSection('normal', normal.length);
+          const grid = block.querySelector('.global-grid');
+          normal.forEach(({ card }) => grid.appendChild(card));
+          fragment.appendChild(block);
+        }
+        if (discarded.length) {
+          const block = makeSection('discarded', discarded.length);
+          const grid = block.querySelector('.discarded-grid');
+          discarded.forEach(({ card }) => grid.appendChild(card));
+          fragment.appendChild(block);
+        }
+        sections.replaceChildren(fragment);
+      } finally {
+        applying = false;
+      }
+    } else {
+      const mainCount = sections.querySelector('.global-list .section-count');
+      const discardedCount = sections.querySelector('.discarded-list .section-count');
+      if (mainCount) mainCount.textContent = normal.length;
+      if (discardedCount) discardedCount.textContent = discarded.length;
     }
 
-    applying = true;
-    try {
-      const ordered = cards
-        .map(card => ({ card, home: byId.get(cardId(card)) }))
-        .filter(x => x.home)
-        .sort((a, b) => compare(a.home, b.home));
-
-      const block = document.createElement('section');
-      block.className = 'section-block global-list';
-      block.innerHTML = `<div class="section-head"><div class="section-title"><span>🏠</span><span>Annunci</span></div><span class="section-count">${ordered.length}</span></div><div class="section-grid global-grid"></div>`;
-      const grid = block.querySelector('.global-grid');
-
-      ordered.forEach(({ card }) => {
-        addStateChip(card);
-        grid.appendChild(card);
-      });
-
-      sections.replaceChildren(block);
-    } finally {
-      applying = false;
+    if (summary) {
+      const newCount = normal.filter(x => x.card.querySelector('.new-badge')).length;
+      const sortLabel = sortOrder.options[sortOrder.selectedIndex]?.text || '';
+      summary.textContent = `${normal.length} ${normal.length === 1 ? 'casa' : 'case'} visibili${newCount ? ` · ${newCount} nuove` : ''}${discarded.length ? ` · ${discarded.length} scartate` : ''} · ${sortLabel}`;
     }
   }
 
   function schedule() {
     clearTimeout(timer);
-    timer = setTimeout(applyGlobalSort, 60);
+    timer = setTimeout(applyLayout, 50);
   }
 
-  sortOrder.addEventListener('change', schedule);
-  const observer = new MutationObserver(schedule);
-  observer.observe(sections, { childList: true, subtree: true });
-  schedule();
+  const start = () => {
+    const sections = document.getElementById('sections');
+    const sortOrder = document.getElementById('sortOrder');
+    if (!sections || !sortOrder) return setTimeout(start, 50);
+    const observer = new MutationObserver(schedule);
+    observer.observe(sections, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+    sortOrder.addEventListener('change', schedule);
+    schedule();
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
+  else start();
 })();
