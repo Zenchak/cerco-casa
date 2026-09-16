@@ -87,12 +87,15 @@
   function decorateCard(card, discarded) {
     const chips = card.querySelector('.chips');
     if (chips) {
-      chips.querySelector('.global-status-chip')?.remove();
       const state = stateFor(card, discarded);
-      const chip = document.createElement('span');
-      chip.className = `chip global-status-chip ${state.cls}`;
-      chip.textContent = state.text;
-      chips.prepend(chip);
+      let chip = chips.querySelector('.global-status-chip');
+      if (!chip) {
+        chip = document.createElement('span');
+        chips.prepend(chip);
+      }
+      const className = `chip global-status-chip ${state.cls}`;
+      if (chip.className !== className) chip.className = className;
+      if (chip.textContent !== state.text) chip.textContent = state.text;
     }
 
     card.classList.toggle('is-ignored', discarded);
@@ -214,7 +217,7 @@
     const sortOrder = document.getElementById('sortOrder');
     if (!sections || !sortOrder) return setTimeout(start, 50);
     const observer = new MutationObserver(schedule);
-    observer.observe(sections, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+    observer.observe(sections, { childList: true, subtree: true });
     sortOrder.addEventListener('change', schedule);
     schedule();
   };
