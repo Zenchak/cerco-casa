@@ -31,7 +31,7 @@
     <div class="topline"><div><h1>🏡 Cerco Casa</h1><div class="sub">Bogdan & Camilla · target ~€300k · fino a €360k se trattabile o pronta</div></div><button class="addbtn" id="openSuggest" type="button">＋ Segnala casa</button></div>
     <div class="filters">
       <button data-filter="all" class="active">Tutte</button><button data-filter="city">Bergamo città</button><button data-filter="garage">Garage</button><button data-filter="garden">Giardino</button><button data-filter="3bed">3+ camere</button>
-      <select id="statusFilter" aria-label="Gradimento"><option value="all">Tutti i gradimenti</option><option value="new">🆕 Nuovi</option><option value="da-vedere">👀 Da vedere</option><option value="da-valutare">🤔 Da valutare</option><option value="ignorare">🚫 Ignorare</option></select>
+      <select id="statusFilter" aria-label="Gradimento"><option value="all">Tutti i gradimenti</option><option value="new">🆕 Nuovi</option><option value="da-vedere">👀 Da vedere</option><option value="da-valutare">🤔 Da valutare</option><option value="ignorare">🗑️ Scartate</option></select>
       <select id="sortOrder" aria-label="Ordina annunci"><option value="added-desc">🆕 Aggiunta: più recenti</option><option value="added-asc">🕰️ Aggiunta: meno recenti</option><option value="price-asc">💶 Prezzo: crescente</option><option value="price-desc">💶 Prezzo: decrescente</option><option value="sqm-desc">📐 Metratura: maggiore</option><option value="sqm-asc">📐 Metratura: minore</option><option value="rating-desc">⭐ Valutazione: migliore</option><option value="beds-desc">🛏️ Camere: più numerose</option><option value="name-asc">🔤 Località: A–Z</option></select>
     </div>
   </div></header>
@@ -64,9 +64,9 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="/homes.js"></script>
+  <script src="/sort-priority.js"></script>
   <script src="/app.js"></script>
   <script src="/note-delete.js"></script>
-  <script src="/sort-priority.js"></script>
-  <!-- redeploy trigger 2026-09-15 -->
+  <!-- redeploy trigger 2026-09-16 -->
 </body>
 </html>
