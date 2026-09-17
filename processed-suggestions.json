@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "1789589557040-0wbksz",
+    "status": "added",
+    "homeId": "scanzorosciate-galimberti33",
+    "url": "https://www.idealista.it/immobile/35874338/",
+    "processedAt": "2026-09-17T12:30:31+02:00",
+    "source": "manual-enrichment-from-user-screenshot-and-indexed-listing"
+  },
+  {
+    "id": "1789589689259-j4b19n",
+    "status": "added",
+    "homeId": "bergamo-bronzetti16",
+    "url": "https://www.casa.it/immobili/53422148/",
+    "processedAt": "2026-09-17T12:30:31+02:00",
+    "source": "manual-enrichment-from-user-screenshot-and-indexed-listing"
+  }
+]
