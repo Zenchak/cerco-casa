@@ -8,7 +8,8 @@ if (!Array.isArray(homes)) throw new Error('homes.json deve contenere un array')
 const legacyWithoutAddedAt = new Set([
   'gerosa','treviolo305','treviolo315','seriate','azzano1','azzano2','dalmine','valverde45',
   'ponteranica-monviso','pedrengo-caravaggio8','dalmine-25aprile80','bergamo-martinella19',
-  'treviolo-rossini','costa-don-sturzo25','brusaporto-rossini6','brusaporto-pioppi10'
+  'treviolo-rossini','costa-don-sturzo25','brusaporto-rossini6','brusaporto-pioppi10',
+  'dalmine-bastone16','pedrengo-kennedy','villa-alme-alpini37'
 ]);
 
 const required = [
