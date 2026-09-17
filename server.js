@@ -6,6 +6,10 @@ const PORT = process.env.PORT || 3000;
 const DATA_DIR = process.env.DATA_DIR || '/data';
 const NOTES_FILE = path.join(DATA_DIR, 'notes.json');
 const SUGGESTIONS_FILE = path.join(DATA_DIR, 'suggestions.json');
+const GITHUB_SYNC_FILE = path.join(DATA_DIR, 'github-synced-suggestions.json');
+const GITHUB_TOKEN = String(process.env.GITHUB_TOKEN || '').trim();
+const GITHUB_REPO = String(process.env.GITHUB_REPO || 'Zenchak/cerco-casa').trim();
+const GITHUB_BRANCH = String(process.env.GITHUB_BRANCH || 'main').trim();
 const LEGACY_NOTES_URL = 'https://cerco-casa-bogdan-camilla.netlify.app/api/notes';
 
 fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -74,14 +78,75 @@ function saveSuggestion(payload) {
   const note = String(payload.nota || payload.note || '').trim().slice(0, 2000);
   if (!/^https?:\/\//i.test(url)) throw new Error('Link annuncio non valido');
   const items = readJson(SUGGESTIONS_FILE, []);
-  items.push({ id: `${Date.now()}-${Math.random().toString(36).slice(2,8)}`, url, sender, priority, note, createdAt: new Date().toISOString() });
+  const item = { id: `${Date.now()}-${Math.random().toString(36).slice(2,8)}`, url, sender, priority, note, createdAt: new Date().toISOString() };
+  items.push(item);
   writeJson(SUGGESTIONS_FILE, items);
+  return item;
+}
+
+async function pushSuggestionToGitHub(item) {
+  if (!GITHUB_TOKEN) return { ok: false, skipped: true, reason: 'token-missing' };
+  const filePath = `incoming-suggestions/${item.id}.json`;
+  const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`;
+  const body = {
+    message: `Queue house suggestion from ${item.sender || 'unknown'}`,
+    content: Buffer.from(JSON.stringify(item, null, 2) + '\n', 'utf8').toString('base64'),
+    branch: GITHUB_BRANCH
+  };
+  const r = await fetch(apiUrl, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      Accept: 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      'Content-Type': 'application/json',
+      'User-Agent': 'cerco-casa-nas-bridge'
+    },
+    body: JSON.stringify(body),
+    signal: AbortSignal.timeout(15000)
+  });
+  if (r.status === 201 || r.status === 200 || r.status === 422) return { ok: true, status: r.status };
+  let details = '';
+  try { details = (await r.json()).message || ''; } catch {}
+  throw new Error(`GitHub ${r.status}${details ? `: ${details}` : ''}`);
+}
+
+let flushRunning = false;
+async function flushSuggestionsToGitHub() {
+  if (flushRunning || !GITHUB_TOKEN) return;
+  flushRunning = true;
+  try {
+    const items = readJson(SUGGESTIONS_FILE, []);
+    const synced = new Set(readJson(GITHUB_SYNC_FILE, []));
+    let changed = false;
+    for (const item of items) {
+      if (!item?.id || synced.has(item.id)) continue;
+      try {
+        await pushSuggestionToGitHub(item);
+        synced.add(item.id);
+        changed = true;
+        console.log(`Segnalazione ${item.id} copiata su GitHub.`);
+      } catch (e) {
+        console.warn(`Bridge GitHub fallito per ${item.id}:`, e.message);
+      }
+    }
+    if (changed) writeJson(GITHUB_SYNC_FILE, [...synced]);
+  } finally {
+    flushRunning = false;
+  }
 }
 
 const server = http.createServer(async (req, res) => {
   const u = new URL(req.url, 'http://localhost');
   try {
-    if (u.pathname === '/health') return sendJson(res, 200, { ok: true });
+    if (u.pathname === '/health') {
+      return sendJson(res, 200, {
+        ok: true,
+        githubBridgeConfigured: Boolean(GITHUB_TOKEN),
+        pendingSuggestions: readJson(SUGGESTIONS_FILE, []).length,
+        githubSyncedSuggestions: readJson(GITHUB_SYNC_FILE, []).length
+      });
+    }
 
     if (u.pathname === '/api/notes' && req.method === 'GET') {
       return sendJson(res, 200, readJson(NOTES_FILE, {}));
@@ -103,13 +168,15 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, 200, readJson(SUGGESTIONS_FILE, []));
     }
     if (u.pathname === '/api/suggestions' && req.method === 'POST') {
-      saveSuggestion(parseBody(req, await getBody(req)));
-      return sendJson(res, 201, { ok: true });
+      const item = saveSuggestion(parseBody(req, await getBody(req)));
+      flushSuggestionsToGitHub().catch(e => console.warn('Bridge GitHub:', e.message));
+      return sendJson(res, 201, { ok: true, id: item.id });
     }
 
     if (u.pathname === '/grazie.html' && req.method === 'POST') {
       saveSuggestion(parseBody(req, await getBody(req)));
-      return sendHtml(res, 200, `<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Segnalazione ricevuta</title><body style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background:#f7f5f1;color:#222;padding:32px"><main style="max-width:620px;margin:auto;background:#fff;border:1px solid #ded8d0;border-radius:18px;padding:24px"><h1>✅ Segnalazione ricevuta</h1><p>La casa è stata salvata sul NAS.</p><p><a href="/" style="color:#1f6f5f;font-weight:700">← Torna a Cerco Casa</a></p></main></body></html>`);
+      flushSuggestionsToGitHub().catch(e => console.warn('Bridge GitHub:', e.message));
+      return sendHtml(res, 200, `<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Segnalazione ricevuta</title><body style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background:#f7f5f1;color:#222;padding:32px"><main style="max-width:620px;margin:auto;background:#fff;border:1px solid #ded8d0;border-radius:18px;padding:24px"><h1>✅ Segnalazione ricevuta</h1><p>La casa è stata salvata sul NAS e messa in coda per l'elaborazione.</p><p><a href="/" style="color:#1f6f5f;font-weight:700">← Torna a Cerco Casa</a></p></main></body></html>`);
     }
 
     return sendJson(res, 404, { error: 'Not found' });
@@ -120,5 +187,10 @@ const server = http.createServer(async (req, res) => {
 });
 
 migrateNotesOnce().finally(() => {
-  server.listen(PORT, '0.0.0.0', () => console.log(`Cerco Casa API in ascolto su ${PORT}`));
+  server.listen(PORT, '0.0.0.0', () => {
+    console.log(`Cerco Casa API in ascolto su ${PORT}`);
+    console.log(`Bridge GitHub: ${GITHUB_TOKEN ? 'configurato' : 'NON configurato'}`);
+    flushSuggestionsToGitHub().catch(e => console.warn('Bridge GitHub iniziale:', e.message));
+    setInterval(() => flushSuggestionsToGitHub().catch(e => console.warn('Bridge GitHub periodico:', e.message)), 60 * 1000);
+  });
 });
