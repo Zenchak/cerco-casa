@@ -7,7 +7,12 @@ const DATA_DIR = process.env.DATA_DIR || '/data';
 const NOTES_FILE = path.join(DATA_DIR, 'notes.json');
 const SUGGESTIONS_FILE = path.join(DATA_DIR, 'suggestions.json');
 const GITHUB_SYNC_FILE = path.join(DATA_DIR, 'github-synced-suggestions.json');
-const GITHUB_TOKEN = String(process.env.GITHUB_TOKEN || '').trim();
+function loadGithubToken() {
+  const fromEnv = String(process.env.GITHUB_TOKEN || '').trim();
+  if (fromEnv) return fromEnv;
+  try { return fs.readFileSync(path.join(DATA_DIR, 'github_token'), 'utf8').trim(); } catch { return ''; }
+}
+const GITHUB_TOKEN = loadGithubToken();
 const GITHUB_REPO = String(process.env.GITHUB_REPO || 'Zenchak/cerco-casa').trim();
 const GITHUB_BRANCH = String(process.env.GITHUB_BRANCH || 'main').trim();
 const LEGACY_NOTES_URL = 'https://cerco-casa-bogdan-camilla.netlify.app/api/notes';
