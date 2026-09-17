@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const { processPendingSuggestions } = require('./suggestion-processor');
 
 const PORT = process.env.PORT || 3000;
 const DATA_DIR = process.env.DATA_DIR || '/data';
@@ -16,6 +17,8 @@ const GITHUB_TOKEN = loadGithubToken();
 const GITHUB_REPO = String(process.env.GITHUB_REPO || 'Zenchak/cerco-casa').trim();
 const GITHUB_BRANCH = String(process.env.GITHUB_BRANCH || 'main').trim();
 const LEGACY_NOTES_URL = 'https://cerco-casa-bogdan-camilla.netlify.app/api/notes';
+const WATCH_FILES = [__filename, path.join(__dirname, 'suggestion-processor.js')];
+const START_MTIMES = new Map(WATCH_FILES.map(f => [f, (() => { try { return fs.statSync(f).mtimeMs; } catch { return 0; } })()]));
 
 fs.mkdirSync(DATA_DIR, { recursive: true });
 
@@ -141,15 +144,21 @@ async function flushSuggestionsToGitHub() {
   }
 }
 
+function processHouseQueue() {
+  return processPendingSuggestions({ dataDir: DATA_DIR, token: GITHUB_TOKEN, repo: GITHUB_REPO, branch: GITHUB_BRANCH });
+}
+
 const server = http.createServer(async (req, res) => {
   const u = new URL(req.url, 'http://localhost');
   try {
     if (u.pathname === '/health') {
+      const processingErrors = readJson(path.join(DATA_DIR, 'suggestion-processing-errors.json'), []);
       return sendJson(res, 200, {
         ok: true,
         githubBridgeConfigured: Boolean(GITHUB_TOKEN),
         pendingSuggestions: readJson(SUGGESTIONS_FILE, []).length,
-        githubSyncedSuggestions: readJson(GITHUB_SYNC_FILE, []).length
+        githubSyncedSuggestions: readJson(GITHUB_SYNC_FILE, []).length,
+        suggestionProcessingErrors: Array.isArray(processingErrors) ? processingErrors.length : 0
       });
     }
 
@@ -175,13 +184,15 @@ const server = http.createServer(async (req, res) => {
     if (u.pathname === '/api/suggestions' && req.method === 'POST') {
       const item = saveSuggestion(parseBody(req, await getBody(req)));
       flushSuggestionsToGitHub().catch(e => console.warn('Bridge GitHub:', e.message));
+      processHouseQueue().catch(e => console.warn('Elaborazione annuncio:', e.message));
       return sendJson(res, 201, { ok: true, id: item.id });
     }
 
     if (u.pathname === '/grazie.html' && req.method === 'POST') {
       saveSuggestion(parseBody(req, await getBody(req)));
       flushSuggestionsToGitHub().catch(e => console.warn('Bridge GitHub:', e.message));
-      return sendHtml(res, 200, `<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Segnalazione ricevuta</title><body style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background:#f7f5f1;color:#222;padding:32px"><main style="max-width:620px;margin:auto;background:#fff;border:1px solid #ded8d0;border-radius:18px;padding:24px"><h1>✅ Segnalazione ricevuta</h1><p>La casa è stata salvata sul NAS e messa in coda per l'elaborazione.</p><p><a href="/" style="color:#1f6f5f;font-weight:700">← Torna a Cerco Casa</a></p></main></body></html>`);
+      processHouseQueue().catch(e => console.warn('Elaborazione annuncio:', e.message));
+      return sendHtml(res, 200, `<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Segnalazione ricevuta</title><body style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background:#f7f5f1;color:#222;padding:32px"><main style="max-width:620px;margin:auto;background:#fff;border:1px solid #ded8d0;border-radius:18px;padding:24px"><h1>✅ Segnalazione ricevuta</h1><p>La casa è stata salvata sul NAS e messa in coda per l'elaborazione automatica.</p><p><a href="/" style="color:#1f6f5f;font-weight:700">← Torna a Cerco Casa</a></p></main></body></html>`);
     }
 
     return sendJson(res, 404, { error: 'Not found' });
@@ -196,6 +207,17 @@ migrateNotesOnce().finally(() => {
     console.log(`Cerco Casa API in ascolto su ${PORT}`);
     console.log(`Bridge GitHub: ${GITHUB_TOKEN ? 'configurato' : 'NON configurato'}`);
     flushSuggestionsToGitHub().catch(e => console.warn('Bridge GitHub iniziale:', e.message));
+    processHouseQueue().catch(e => console.warn('Elaborazione iniziale annunci:', e.message));
     setInterval(() => flushSuggestionsToGitHub().catch(e => console.warn('Bridge GitHub periodico:', e.message)), 60 * 1000);
+    setInterval(() => processHouseQueue().catch(e => console.warn('Elaborazione periodica annunci:', e.message)), 60 * 1000);
+    setInterval(() => {
+      for (const f of WATCH_FILES) {
+        let now = 0; try { now = fs.statSync(f).mtimeMs; } catch {}
+        if (now && now !== START_MTIMES.get(f)) {
+          console.log('Codice backend aggiornato: riavvio automatico del container.');
+          process.exit(0);
+        }
+      }
+    }, 30 * 1000);
   });
 });
