@@ -1,0 +1,30 @@
+{
+  "id": "scanzorosciate-bosis",
+  "name": "Scanzorosciate · Via Giacomo Bosis",
+  "lat": 45.7108,
+  "lng": 9.7355,
+  "price": 259000,
+  "type": "Piano terra in villetta con ingresso indipendente",
+  "sqm": "130 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "8/10",
+  "tags": [
+    "3 camere matrimoniali",
+    "2 bagni",
+    "Giardino privato 250 m²",
+    "Box doppio",
+    "Cantina",
+    "Ingresso indipendente",
+    "Abitabile subito",
+    "Classe D"
+  ],
+  "note": "Non è una villa autonoma completa, ma è una soluzione familiare molto centrata per rapporto prezzo/spazi: piano terra in villetta con ingresso indipendente, tre camere matrimoniali, doppi servizi, circa 250 m² di giardino privato, box doppio e cantina. A 259.000 € lascia inoltre un margine importante rispetto al target economico.",
+  "warning": "COMPROMESSO SULL'INDIPENDENZA: è un appartamento al piano terra in villetta, non una villa singola o una porzione cielo-terra. Spese condominiali dichiarate circa 80 €/mese. Coordinate indicative sulla via, poiché il civico esatto non è pubblicato.",
+  "url": "https://www.chicercacasa.it/vendita-quadrilocale-scanzorosciate_via-giacomo-bosis_184596703/",
+  "addedAt": "2026-09-19T01:57:18+02:00"
+}
