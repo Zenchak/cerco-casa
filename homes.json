@@ -717,5 +717,34 @@
     "warning": "Annuncio verificato attivo il 18/09/2026 e pubblicato/aggiornato il 10-11/09/2026. Libera da metà febbraio 2027. Coordinate indicative: verificare posizione esatta sulla mappa.",
     "url": "https://www.immobiliare.it/annunci/132342322/",
     "addedAt": "2026-09-18T21:02:01+02:00"
+  },
+  {
+    "id": "grassobbio-vincenzo-epis",
+    "name": "Grassobbio · Via Vincenzo Epis",
+    "lat": 45.6501,
+    "lng": 9.7279,
+    "price": 360000,
+    "type": "Villa bifamiliare",
+    "sqm": "165 m²",
+    "beds": 3,
+    "garden": true,
+    "garage": true,
+    "city": false,
+    "top": true,
+    "status": "NEW",
+    "rating": "8,5/10",
+    "tags": [
+      "3 camere",
+      "2 bagni",
+      "Giardino ~450 m²",
+      "2 box singoli",
+      "Taverna",
+      "Libera su 3 lati",
+      "Nessuna spesa condominiale"
+    ],
+    "note": "Molto centrata sui criteri: villa bifamiliare libera su tre lati, tre camere, due bagni, taverna, grande giardino di circa 450 m² e due box singoli. Il prezzo è esattamente al tetto massimo del budget, quindi interessante soprattutto con margine di trattativa.",
+    "warning": "PREZZO AL LIMITE: 360.000 €. Classe energetica G (284,92 kWh/m² anno), costruzione 1983. L'annuncio non pubblica il civico esatto: coordinate indicative sulla Via Vincenzo Epis.",
+    "url": "https://www.immobiliare.it/annunci/126401997/",
+    "addedAt": "2026-09-18T22:02:05+02:00"
   }
 ]
