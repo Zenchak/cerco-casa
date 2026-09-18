@@ -652,5 +652,35 @@
     "warning": "Annuncio verificato attivo il 18/09/2026. Un solo bagno dichiarato e nessun box esplicitamente indicato nell'annuncio. Classe energetica G. Coordinate indicative sulla via: verificare la posizione esatta prima di una visita.",
     "url": "https://www.casa.it/immobili/54635845/",
     "addedAt": "2026-09-18T15:01:14+02:00"
+  },
+  {
+    "id": "dalmine-garbagni26",
+    "name": "Dalmine · Via Mario Garbagni 26",
+    "lat": 45.6516,
+    "lng": 9.6055,
+    "price": 339000,
+    "type": "Villa a schiera di testa",
+    "sqm": "184 m²",
+    "beds": 3,
+    "garden": true,
+    "garage": true,
+    "city": false,
+    "top": true,
+    "status": "NEW",
+    "rating": "8/10",
+    "tags": [
+      "3 camere",
+      "2 bagni",
+      "Giardino/spazio esterno privato",
+      "Box",
+      "Cantina",
+      "Lavanderia",
+      "Villa di testa",
+      "Annuncio attivo"
+    ],
+    "note": "Interessante per metratura e configurazione familiare: villetta di testa da 184 m² con tre camere, due bagni, cucina abitabile, cantina/lavanderia, spazio esterno esclusivo e box. Prezzo 339.000 €, sopra il target reale ma entro il limite massimo.",
+    "warning": "Annuncio verificato attivo il 18/09/2026. Disponibilità dichiarata solo da gennaio/febbraio 2028: vincolo importante da valutare. Coordinate indicative sulla via; verificare posizione esatta.",
+    "url": "https://www.trovacasa.it/annunci/bg-tc-18585-72229932",
+    "addedAt": "2026-09-18T19:02:56+02:00"
   }
 ]
