@@ -1,0 +1,21 @@
+{
+  "id": "villa-dalme-alpini37",
+  "name": "Villa d’Almè · Via degli Alpini 37",
+  "lat": 45.748,
+  "lng": 9.62,
+  "price": 250000,
+  "type": "Villetta a schiera",
+  "sqm": "135 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "8,5/10",
+  "tags": ["3 camere", "2 bagni", "Giardino privato", "Box singolo", "Cantina/lavanderia", "Prezzo ribassato"],
+  "note": "Molto centrata sul rapporto prezzo/requisiti: tre camere matrimoniali, due bagni, giardino posteriore, terrazzo vivibile, cantina/lavanderia e box singolo. Il prezzo diretto rilevato è 250.000 €, ribassato da 270.000 €.",
+  "warning": "DA RISTRUTTURARE e classe energetica G (410,86 kWh/m² anno); spese condominiali circa 58 €/mese. Coordinate indicative sulla via: il civico è pubblico ma la posizione esatta non è stata geocodificata da fonte primaria.",
+  "url": "https://www.immobiliare.it/annunci/127402003/",
+  "addedAt": "2026-09-19T01:01:04+02:00"
+}
