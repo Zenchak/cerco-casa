@@ -3,25 +3,27 @@
 Questo repository è la sorgente dati del sito Cerco Casa di Bogdan e Camilla.
 
 ## Regola principale
-Quando una chat trova un nuovo annuncio da inserire nel sito, il lavoro NON è concluso finché `homes.json` non è stato aggiornato con successo su GitHub e il commit non è stato verificato.
+Per i NUOVI annunci non modificare direttamente il grande `homes.json`. Creare invece un piccolo file JSON autonomo nella cartella `homes/`. Il workflow GitHub Actions `Merge modular homes` rigenera automaticamente `homes.json`, che resta il file consumato dal sito/NAS.
+
+Il lavoro NON è concluso finché il file modulare non è stato creato con successo e, quando disponibile, il workflow non ha rigenerato/validato `homes.json`.
 
 ## Flusso obbligatorio per ogni nuovo annuncio
-1. Leggere sempre la versione corrente di `homes.json` prima di modificare il file.
-2. Verificare che l'annuncio sia ancora attivo e preferire il link diretto al singolo immobile, non una pagina categoria/ricerca.
-3. Controllare duplicati almeno per:
-   - `id`
-   - URL normalizzato
-   - stesso immobile/indirizzo anche se pubblicato su un portale diverso
-4. Valutare l'immobile rispetto ai criteri del progetto e compilare tutti i campi richiesti.
-5. Aggiungere l'oggetto in fondo a `homes.json` con `addedAt` in formato ISO 8601, usando la data/ora dell'inserimento nel sito.
-6. Aggiornare `homes.json` su GitHub.
-7. Rileggere `homes.json` dopo il commit e verificare che il nuovo `id` sia realmente presente.
-8. Solo dopo la verifica comunicare all'utente che l'annuncio è stato aggiunto al sito, includendo il commit SHA quando disponibile.
+1. Leggere `homes.json` (anche a intervalli se necessario) e i file pertinenti in `homes/` per il controllo duplicati.
+2. Verificare che l'annuncio sia ancora attivo e preferire il link diretto al singolo immobile.
+3. Controllare duplicati almeno per `id`, URL normalizzato e stesso immobile/indirizzo anche su portali diversi.
+4. Compilare tutti i campi richiesti.
+5. Creare `homes/<id>.json` come singolo oggetto JSON, con `addedAt` ISO 8601 corrente. Per un nuovo annuncio lo stato deve restare NEW/nuovo secondo lo schema usato dal sito finché non viene aperto.
+6. Non riscrivere `homes.json` manualmente per aggiungere un nuovo annuncio.
+7. Il workflow `.github/workflows/merge-homes.yml` esegue `scripts/merge-homes.mjs`, aggiorna `homes.json`, esegue `npm run validate:homes` e committa il file generato.
+8. Verificare il file modulare appena creato; quando possibile verificare anche che il nuovo id compaia nel `homes.json` rigenerato e riportare il commit SHA.
+9. Se il workflow fallisce, segnalarlo esplicitamente: il file modulare resta la sorgente del nuovo annuncio e va corretto, non va aggirato riscrivendo alla cieca `homes.json`.
 
-## Campi richiesti per i nuovi annunci
+## Compatibilità con gli annunci storici
+Gli annunci già presenti solo in `homes.json` restano validi. Lo script di merge parte sempre dall'attuale `homes.json` e aggiunge/aggiorna gli oggetti presenti in `homes/`; quindi non serve migrare subito tutto lo storico.
+
+## Campi richiesti
 Ogni nuovo oggetto deve contenere:
-
-- `id`: slug univoco e stabile
+- `id`
 - `name`
 - `lat`
 - `lng`
@@ -41,19 +43,17 @@ Ogni nuovo oggetto deve contenere:
 - `url`
 - `addedAt`
 
-`addedAt` deve essere una data ISO valida, ad esempio `2026-09-15T12:30:00+02:00` oppure equivalente UTC.
-
 ## Regole dati
-- Non modificare o cancellare reazioni e note personali dal file: sono salvate separatamente sul NAS tramite API.
-- Non riutilizzare un `id` esistente.
+- Non modificare o cancellare reazioni e note personali salvate separatamente sul NAS.
+- Non riutilizzare un id esistente.
 - Non inserire due volte lo stesso URL.
-- Se lo stesso immobile è ripubblicato su un altro portale, verificare se è davvero una nuova proposta prima di creare una seconda scheda.
+- Se lo stesso immobile è ripubblicato su un altro portale, verificare se è davvero una nuova proposta.
 - Se la posizione esatta non è pubblica, usare coordinate indicative e dichiararlo in `warning`.
-- Se l'annuncio è fuori budget o fuori parametri ma vale la pena tenerlo nel radar, specificarlo chiaramente in `tags`, `note` e/o `warning`.
+- Se l'annuncio è fuori budget/parametri ma interessante, dichiararlo chiaramente.
+- Le segnalazioni Bogdan/Camilla seguono anche le regole di `incoming-suggestions/` e `processed-suggestions.json`.
 
 ## Verifica tecnica
-Dopo una modifica a `homes.json`, eseguire o controllare `npm run validate:homes`.
-Il repository contiene anche un workflow GitHub Actions che valida automaticamente il file.
+Il workflow valida automaticamente il `homes.json` generato con `npm run validate:homes`.
 
 ## Pubblicazione
-Il NAS sincronizza il repository circa ogni 60 secondi. Dopo un commit valido, il nuovo annuncio dovrebbe comparire nel sito entro circa un minuto, senza deploy manuale.
+Il NAS sincronizza il repository circa ogni 60 secondi. Dopo il commit del `homes.json` generato, il nuovo annuncio dovrebbe comparire sul sito entro circa un minuto.
