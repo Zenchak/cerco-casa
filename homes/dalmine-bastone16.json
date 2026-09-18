@@ -1,0 +1,21 @@
+{
+  "id": "dalmine-bastone16",
+  "name": "Dalmine · Via Bastone 16",
+  "lat": 45.65,
+  "lng": 9.60,
+  "price": 340000,
+  "type": "Villa singola plurifamiliare",
+  "sqm": "426 m²",
+  "beds": 7,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": false,
+  "status": "NEW",
+  "rating": "6,5/10",
+  "tags": ["Villa singola", "3 appartamenti", "7 camere", "3 bagni", "Giardino privato", "Doppio box", "Da ristrutturare", "Unità locata fino 10/2028", "Annuncio attivo"],
+  "note": "Prezzo 340.000 € per 426 m² e tre appartamenti indipendenti: metratura e potenziale sono notevoli, ma è una soluzione più complessa del target familiare standard. Interessante soprattutto se si valuta una ristrutturazione importante o un uso plurifamiliare.",
+  "warning": "Annuncio verificato attivo il 18/09/2026. Immobile da ristrutturare; il terzo appartamento risulta locato fino a ottobre 2028. Le immagini dell'annuncio includono render e non rappresentano lo stato attuale. Coordinate indicative sulla zona di Brembo/Dalmine: verificare posizione esatta.",
+  "url": "https://www.immobiliare.it/annunci/131647910/",
+  "addedAt": "2026-09-18T19:59:09+02:00"
+}
