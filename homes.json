@@ -746,5 +746,35 @@
     "warning": "PREZZO AL LIMITE: 360.000 €. Classe energetica G (284,92 kWh/m² anno), costruzione 1983. L'annuncio non pubblica il civico esatto: coordinate indicative sulla Via Vincenzo Epis.",
     "url": "https://www.immobiliare.it/annunci/126401997/",
     "addedAt": "2026-09-18T22:02:05+02:00"
+  },
+  {
+    "id": "zanica-dante10",
+    "name": "Zanica · Via Dante Alighieri 10",
+    "lat": 45.6407,
+    "lng": 9.6856,
+    "price": 350000,
+    "type": "Villa a schiera libera su tre lati",
+    "sqm": "150 m²",
+    "beds": 3,
+    "garden": true,
+    "garage": true,
+    "city": false,
+    "top": true,
+    "status": "NEW",
+    "rating": "8,5/10",
+    "tags": [
+      "3 camere",
+      "4 bagni",
+      "Giardino privato",
+      "Box 35 m²",
+      "Libera su 3 lati",
+      "Ristrutturata 2015",
+      "Classe B",
+      "Libera al rogito"
+    ],
+    "note": "Molto centrata sui criteri: tre camere, quattro bagni, spazi esterni privati, cantina e box da 35 m². Costruita nel 1998 e ristrutturata nel 2015, risulta in ottime condizioni e pronta da abitare. Prezzo alto ma ancora entro il tetto massimo.",
+    "warning": "Prezzo di 350.000 € vicino al limite massimo. Il giardino è descritto come due angoli verdi con zona piastrellata, quindi va verificata in visita la reale fruibilità e metratura dello spazio esterno. Coordinate indicative sul civico pubblicato.",
+    "url": "https://www.immobiliare.it/annunci/132166748/",
+    "addedAt": "2026-09-18T23:00:32+02:00"
   }
 ]
