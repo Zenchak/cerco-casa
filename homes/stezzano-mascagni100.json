@@ -1,0 +1,21 @@
+{
+  "id": "stezzano-mascagni100",
+  "name": "Stezzano · Via Mascagni 100",
+  "lat": 45.6505,
+  "lng": 9.6507,
+  "price": 299000,
+  "type": "Villa singola",
+  "sqm": "342 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": false,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "8/10",
+  "tags": ["3 camere", "Villa singola", "Giardino 300 m²", "Cantina/locali accessori 171 m²", "Libera al rogito", "Annuncio attivo"],
+  "note": "Molto interessante per indipendenza, metratura e prezzo: villa singola con 171 m² abitativi al primo piano e altri 171 m² di cantina/locali accessori al piano terra, oltre a circa 300 m² di giardino. Prezzo 299.000 €, pienamente nel target. Da valutare bene la distribuzione su due livelli e l'eventuale costo di aggiornamento di una casa del 1962.",
+  "warning": "Annuncio verificato attivo il 18/09/2026. Un solo bagno dichiarato e nessun box esplicitamente indicato nell'annuncio. Classe energetica G. Coordinate indicative sulla via: verificare la posizione esatta prima di una visita.",
+  "url": "https://www.casa.it/immobili/54635845/",
+  "addedAt": "2026-09-18T15:01:14+02:00"
+}
