@@ -595,5 +595,34 @@
     "warning": "Annuncio verificato attivo il 18/09/2026. Coordinate indicative sulla via; verificare posizione esatta. Villa a schiera centrale, non di testa.",
     "url": "https://www.immobiliare.it/annunci/132409986/",
     "addedAt": "2026-09-18T11:00:56+02:00"
+  },
+  {
+    "id": "alzano-marconi20",
+    "name": "Alzano Lombardo · Via Guglielmo Marconi 20",
+    "lat": 45.738,
+    "lng": 9.735,
+    "price": 188000,
+    "type": "Villetta bifamiliare / casa semi-indipendente",
+    "sqm": "274 m²",
+    "beds": 4,
+    "garden": true,
+    "garage": true,
+    "city": false,
+    "top": false,
+    "status": "NEW",
+    "rating": "7/10",
+    "tags": [
+      "4+ camere",
+      "3 bagni",
+      "Giardino privato",
+      "Box",
+      "Posto auto",
+      "Da ristrutturare",
+      "Annuncio attivo"
+    ],
+    "note": "Prezzo molto sotto target e metratura enorme: soluzione semi-indipendente su tre livelli con giardino privato, 11 locali e possibilità di ricavare una grande abitazione o due unità. Interessante per rapporto spazio/prezzo, ma richiede ristrutturazione completa.",
+    "warning": "Annuncio verificato attivo il 18/09/2026. Immobile da ristrutturare completamente: il prezzo di 188.000 € va valutato insieme a un budget lavori potenzialmente importante. Coordinate indicative sulla via; verificare posizione esatta.",
+    "url": "https://www.idealista.it/immobile/34190998/",
+    "addedAt": "2026-09-18T13:02:41+02:00"
   }
 ]
