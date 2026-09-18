@@ -1,0 +1,29 @@
+{
+  "id": "ponteranica-leone-xiii",
+  "name": "Ponteranica · Via Leone XIII",
+  "lat": 45.7409,
+  "lng": 9.6767,
+  "price": 310000,
+  "type": "Villa singola al rustico",
+  "sqm": "300 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": false,
+  "status": "NEW",
+  "rating": "7/10?",
+  "tags": [
+    "Villa singola",
+    "3 camere",
+    "3 bagni",
+    "Giardino ~250 m²",
+    "Box quadruplo ~75 m²",
+    "Panoramica",
+    "Al rustico"
+  ],
+  "note": "Villa singola al rustico in posizione panoramica nel Parco dei Colli: circa 300 m² complessivi su più livelli, tre camere, tre bagni, giardino su tre lati e grande box quadruplo. Il prezzo di acquisto è interessante, ma il costo di completamento può portare l'investimento complessivo sensibilmente oltre il budget: da stimare prima di considerarla prioritaria.",
+  "warning": "DA COMPLETARE / FUORI TARGET IDEALE: immobile venduto al rustico; il prezzo di 310.000 € non comprende i lavori necessari per renderlo abitabile. Coordinate indicative sulla via perché l'annuncio non pubblica il civico esatto.",
+  "url": "https://www.immobiliare.it/annunci/126790767/",
+  "addedAt": "2026-09-18T23:58:36+02:00"
+}
