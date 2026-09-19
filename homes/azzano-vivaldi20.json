@@ -1,0 +1,30 @@
+{
+  "id": "azzano-vivaldi20",
+  "name": "Azzano San Paolo · Via Antonio Vivaldi 20",
+  "lat": 45.6570,
+  "lng": 9.6740,
+  "price": 323000,
+  "type": "Villa a schiera di testa",
+  "sqm": "151 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "9/10",
+  "tags": [
+    "3 camere",
+    "2 bagni",
+    "Giardino privato",
+    "Box doppio",
+    "Taverna",
+    "Ristrutturata 2023",
+    "Classe B",
+    "Ribassata da 340.000 €"
+  ],
+  "note": "Molto centrata sui criteri: villetta di testa libera su tre lati, tre camere, due bagni, giardino su due lati, taverna/lavanderia e box doppio in larghezza. Ristrutturata nel 2023 con interventi su caldaia, pavimenti, serramenti e termosifoni; aria condizionata. Il prezzo corrente indicizzato dai portali è 323.000 €, ribassato da 340.000 €.",
+  "warning": "Spese condominiali indicate in circa 80 €/mese. Le coordinate sono indicative sulla zona di Via Antonio Vivaldi; il civico 20 è pubblicato ma il portale avverte che il puntatore può non coincidere con l'ubicazione esatta.",
+  "url": "https://www.immobiliare.it/annunci/127761624/",
+  "addedAt": "2026-09-19T08:57:29+02:00"
+}
