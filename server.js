@@ -305,6 +305,19 @@ async function handleHubAuth(req, res, u) {
     return true;
   }
 
+  if (u.pathname === '/auth/bootstrap' && (req.method === 'POST' || req.method === 'GET')) {
+    const trusted = String(req.headers['x-auth-fallback'] || '') === '1';
+    const user = normalizeHubUser(req.headers['x-auth-user']);
+    if (!trusted || !user) { sendJson(res, 403, { error: 'Bootstrap non autorizzato' }); return true; }
+    res.writeHead(200, {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': 'no-store',
+      'set-cookie': sessionCookie(user)
+    });
+    res.end(JSON.stringify({ ok: true, user }));
+    return true;
+  }
+
   if (u.pathname === '/auth/fallback' && req.method === 'GET') {
     const trusted = String(req.headers['x-auth-fallback'] || '') === '1';
     const user = normalizeHubUser(req.headers['x-auth-user']);
