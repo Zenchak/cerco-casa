@@ -1,0 +1,30 @@
+{
+  "id": "bagnatica-kennedy",
+  "name": "Bagnatica · Via Fratelli Kennedy",
+  "lat": 45.6608,
+  "lng": 9.7818,
+  "price": 287000,
+  "type": "Villetta a schiera",
+  "sqm": "205 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "8,5/10",
+  "tags": [
+    "3 camere",
+    "2 bagni",
+    "Giardino 140 m²",
+    "Box singolo",
+    "Taverna",
+    "Lavanderia",
+    "Interni rifiniti 2021",
+    "Pronta da vivere"
+  ],
+  "note": "Molto interessante per rapporto prezzo/spazi: 205 m², tre camere, due bagni, giardino esclusivo di circa 140 m², portico, cucina abitabile, taverna e lavanderia. Gli interni sono stati ultimati e rifiniti nel 2021 e l'annuncio la descrive in condizioni eccellenti, senza lavori immediati.",
+  "warning": "Da chiarire il costo del box: la descrizione dell'inserzionista indica possibilità di box singolo a 15.000 € aggiuntivi, mentre Casa.it riporta box incluso nel prezzo di 287.000 €. Classe energetica G. Coordinate indicative sulla via; civico non pubblicato.",
+  "url": "https://www.casa.it/immobili/53419200/",
+  "addedAt": "2026-09-19T14:58:52+02:00"
+}
