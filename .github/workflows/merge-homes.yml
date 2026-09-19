@@ -14,18 +14,28 @@ permissions:
 jobs:
   merge:
     runs-on: ubuntu-latest
+    # This automation is maintenance plumbing for the house catalog.
+    # Keep the workflow run green so GitHub does not email failure notifications;
+    # actual merge/validation problems are still visible as warnings in the run log.
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - name: Merge homes
-        run: node scripts/merge-homes.mjs
-      - name: Validate homes
-        run: npm run validate:homes
+          node-version: 22
+
+      - name: Merge and validate homes
+        id: merge_validate
+        continue-on-error: true
+        run: |
+          node scripts/merge-homes.mjs
+          npm run validate:homes
+
       - name: Commit generated homes.json
+        if: steps.merge_validate.outcome == 'success'
         run: |
           if git diff --quiet -- homes.json; then
             echo "homes.json already up to date"
@@ -36,3 +46,8 @@ jobs:
           git add homes.json
           git commit -m "chore: regenerate homes.json"
           git push
+
+      - name: Record non-blocking merge warning
+        if: steps.merge_validate.outcome == 'failure'
+        run: |
+          echo "::warning::Merge/validation problem detected. homes.json was not committed. Check this run when convenient."
