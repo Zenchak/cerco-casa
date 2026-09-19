@@ -1217,5 +1217,35 @@
     "warning": "L'annuncio non dichiara box/garage o posto auto: limite importante rispetto ai criteri del progetto. Classe energetica G. Coordinate indicative sulla via; il civico 2 è pubblicato nell'annuncio.",
     "url": "https://www.casa.it/immobili/54655879/",
     "addedAt": "2026-09-19T20:57:54+02:00"
+  },
+  {
+    "id": "brusaporto-290-schiera",
+    "name": "Brusaporto · villa a schiera con grande giardino",
+    "lat": 45.6719,
+    "lng": 9.7617,
+    "price": 290000,
+    "type": "Villa a schiera",
+    "sqm": "200 m²",
+    "beds": 3,
+    "garden": true,
+    "garage": true,
+    "city": false,
+    "top": true,
+    "status": "NEW",
+    "rating": "9/10",
+    "tags": [
+      "3 camere",
+      "3 bagni",
+      "Giardino ~350 m²",
+      "Box doppio",
+      "Taverna",
+      "Mansarda 40 m²",
+      "Lavanderia",
+      "Annuncio attivo"
+    ],
+    "note": "Proposta molto centrata sui criteri: tre camere, tre bagni, grande giardino piantumato di circa 350 m², box doppio in larghezza, taverna e mansarda. Il prezzo di 290.000 € lascia anche un buon margine rispetto al tetto massimo del progetto.",
+    "warning": "ANNUNCIO ATTIVO: verificato il 19/09/2026 su Casa.it, TrovaCasa e Immobiliare.it. L'inserzionista non pubblica l'indirizzo preciso, quindi il pin è indicativo a livello comunale. Spese condominiali dichiarate minime; classe energetica non indicata.",
+    "url": "https://www.casa.it/immobili/54655094/",
+    "addedAt": "2026-09-19T22:57:33+02:00"
   }
 ]
