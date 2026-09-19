@@ -1,0 +1,30 @@
+{
+  "id": "dalmine-piave18",
+  "name": "Dalmine · Via Piave 18",
+  "lat": 45.6502,
+  "lng": 9.6077,
+  "price": 349000,
+  "type": "Villa a schiera di testa",
+  "sqm": "217 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "8,5/10",
+  "tags": [
+    "3 camere",
+    "2 bagni",
+    "Giardino ~186 m²",
+    "Villa di testa",
+    "Box",
+    "Libera subito",
+    "Nessuna spesa condominiale",
+    "Classe F"
+  ],
+  "note": "Molto centrata per una famiglia: villa di testa libera subito, tre camere, due bagni, quasi 200 m² di giardino privato, ampi spazi accessori al seminterrato e box incluso. Un secondo box nelle vicinanze è disponibile separatamente a 18.000 €.",
+  "warning": "Prezzo vicino al tetto massimo ma dentro budget. Classe energetica F (315,49 kWh/m² anno). Coordinate indicative sulla via/civico da verificare.",
+  "url": "https://www.immobiliare.it/annunci/131302284/",
+  "addedAt": "2026-09-19T06:01:59+02:00"
+}
