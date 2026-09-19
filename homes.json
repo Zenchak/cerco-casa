@@ -1070,5 +1070,34 @@
     "warning": "AL RUSTICO: da verificare con attenzione costi, pratiche e stato effettivo dei lavori prima di considerarla realmente entro budget. Coordinate indicative sulla zona di Via Cume: il civico esatto non è pubblicato nell'annuncio.",
     "url": "https://www.immobiliare.it/annunci/124002333/",
     "addedAt": "2026-09-19T08:03:00+02:00"
+  },
+  {
+    "id": "zanica-132166748",
+    "name": "Zanica · villetta a schiera con giardino",
+    "lat": 45.6408,
+    "lng": 9.6852,
+    "price": 350000,
+    "type": "Villa a schiera",
+    "sqm": "150 m²",
+    "beds": 3,
+    "garden": true,
+    "garage": true,
+    "city": false,
+    "top": true,
+    "status": "NEW",
+    "rating": "8,5/10",
+    "tags": [
+      "3 camere",
+      "4 bagni",
+      "Giardino privato",
+      "Box 35 m²",
+      "Cantina",
+      "Ristrutturata",
+      "Annuncio recente"
+    ],
+    "note": "Molto centrata per una famiglia: tre camere, quattro bagni, cucina abitabile, due zone verdi più area piastrellata e box ampio da 35 m². Annuncio pubblicato il 4 settembre 2026; dotazioni interessanti tra cui caldaia a condensazione, climatizzazione, antifurto e irrigazione.",
+    "warning": "Prezzo vicino al tetto massimo di 360.000 €. L'indirizzo esatto non è pubblicato nella fonte verificata: coordinate indicative sul comune di Zanica. Verificare in visita dimensione effettiva del giardino e classe energetica completa.",
+    "url": "https://www.wikicasa.it/annuncio/30749049",
+    "addedAt": "2026-09-19T11:00:02+02:00"
   }
 ]
