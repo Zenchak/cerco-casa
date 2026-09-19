@@ -1099,5 +1099,35 @@
     "warning": "Prezzo vicino al tetto massimo di 360.000 €. L'indirizzo esatto non è pubblicato nella fonte verificata: coordinate indicative sul comune di Zanica. Verificare in visita dimensione effettiva del giardino e classe energetica completa.",
     "url": "https://www.wikicasa.it/annuncio/30749049",
     "addedAt": "2026-09-19T11:00:02+02:00"
+  },
+  {
+    "id": "pedrengo-villa-919",
+    "name": "Pedrengo · villa singola",
+    "lat": 45.6959,
+    "lng": 9.7338,
+    "price": 360000,
+    "type": "Villa singola",
+    "sqm": "282 m²",
+    "beds": 3,
+    "garden": true,
+    "garage": true,
+    "city": false,
+    "top": true,
+    "status": "NEW",
+    "rating": "8/10",
+    "tags": [
+      "3 camere",
+      "2 bagni",
+      "Giardino ampio",
+      "Box doppio ~50 m²",
+      "Portico ~40 m²",
+      "Interrato ~100 m²",
+      "Da ristrutturare",
+      "Classe F"
+    ],
+    "note": "Villa singola con ampio giardino, tre camere, due bagni, portico di circa 40 m², piano interrato pluriuso con lavanderia e autorimessa doppia di circa 50 m². Molto centrata per indipendenza e spazi, ma il prezzo è esattamente al tetto massimo e va considerato il costo della ristrutturazione.",
+    "warning": "ANNUNCIO ATTIVO verificato il 2026-09-19 su TrovaCasa e riscontrato anche su Immobiliare.it. DA RISTRUTTURARE; prezzo al limite massimo di 360.000 €. L'indirizzo esatto non è pubblicato: coordinate indicative a livello comunale.",
+    "url": "https://www.trovacasa.it/annunci/bg-tc-40125-71740075",
+    "addedAt": "2026-09-19T14:00:44+02:00"
   }
 ]
