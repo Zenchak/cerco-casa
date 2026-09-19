@@ -1,0 +1,28 @@
+{
+  "id": "sorisole-cume",
+  "name": "Sorisole · Via Cume",
+  "lat": 45.7434,
+  "lng": 9.6596,
+  "price": 300000,
+  "type": "Villa singola al rustico",
+  "sqm": "400 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": false,
+  "status": "NEW",
+  "rating": "7/10",
+  "tags": [
+    "3 camere da progetto",
+    "Giardino ~350 m²",
+    "Box ~60 m²",
+    "Villa singola",
+    "Al rustico",
+    "Fuori parametri potenziale"
+  ],
+  "note": "Villa singola molto grande e indipendente, con progetto per tre camere, portico, terrazza, taverna/cantine e box di circa 60 m². Il prezzo di acquisto è dentro budget, ma essendo al rustico il costo di completamento può portare l'investimento complessivo sensibilmente oltre il target: interessante soprattutto se i lavori risultano quantificabili e sostenibili.",
+  "warning": "AL RUSTICO: da verificare con attenzione costi, pratiche e stato effettivo dei lavori prima di considerarla realmente entro budget. Coordinate indicative sulla zona di Via Cume: il civico esatto non è pubblicato nell'annuncio.",
+  "url": "https://www.immobiliare.it/annunci/124002333/",
+  "addedAt": "2026-09-19T08:03:00+02:00"
+}
