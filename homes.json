@@ -1159,5 +1159,34 @@
     "warning": "Da chiarire il costo del box: la descrizione dell'inserzionista indica possibilità di box singolo a 15.000 € aggiuntivi, mentre Casa.it riporta box incluso nel prezzo di 287.000 €. Classe energetica G. Coordinate indicative sulla via; civico non pubblicato.",
     "url": "https://www.casa.it/immobili/53419200/",
     "addedAt": "2026-09-19T14:58:52+02:00"
+  },
+  {
+    "id": "alzano-olera-260",
+    "name": "Alzano Lombardo · Olera",
+    "lat": 45.75672,
+    "lng": 9.69044,
+    "price": 260000,
+    "type": "Villa singola",
+    "sqm": "550 m² commerciali (circa 300 m² abitazione dichiarati)",
+    "beds": 3,
+    "garden": true,
+    "garage": true,
+    "city": false,
+    "top": false,
+    "status": "NEW",
+    "rating": "7,5/10",
+    "tags": [
+      "3 camere",
+      "Villa singola",
+      "Giardino/bosco ~3.000 m²",
+      "Box doppio",
+      "Solaio mansardabile",
+      "Da ristrutturare",
+      "Olera"
+    ],
+    "note": "Casa singola su due piani più grande solaio mansardabile, con tre camere al piano abitativo, terrazzi, box doppio, cantine e lavanderia. Prezzo molto interessante rispetto a metratura e terreno, ma la posizione collinare di Olera e la ristrutturazione necessaria la rendono una proposta da valutare con attenzione.",
+    "warning": "DA RISTRUTTURARE. L'annuncio dichiara circa 3.000 m² tra giardino e bosco e una superficie commerciale di 550 m², mentre nella descrizione parla di circa 300 m² di abitazione: metrature da verificare. Posizione indicativa a livello della frazione Olera; civico non pubblicato.",
+    "url": "https://www.immobiliare.it/annunci/120325488/",
+    "addedAt": "2026-09-19T15:58:15+02:00"
   }
 ]
