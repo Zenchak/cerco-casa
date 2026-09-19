@@ -1,0 +1,30 @@
+{
+  "id": "levate-san-rocco5",
+  "name": "Levate · Via San Rocco 5",
+  "lat": 45.6268,
+  "lng": 9.6258,
+  "price": 239000,
+  "type": "Villa singola",
+  "sqm": "239 m²",
+  "beds": 2,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": false,
+  "status": "NEW",
+  "rating": "7,5/10",
+  "tags": [
+    "Villa singola",
+    "Libera su 3 lati",
+    "Giardino 193 m²",
+    "2 camere + mansarda",
+    "2 bagni",
+    "Box obbligatorio +16.000 €",
+    "Classe D",
+    "Da ristrutturare"
+  ],
+  "note": "Prezzo molto interessante per indipendenza e metratura. Oggi ha due camere al primo piano; la mansarda, ristrutturata ma ancora al rustico e già predisposta per cucina e bagno, offre margine per ricavare ulteriore spazio abitabile. Il box è ad acquisto obbligatorio per 16.000 €, quindi il costo effettivo immobile+box è 255.000 €.",
+  "warning": "DA RISTRUTTURARE e oggi solo 2 camere finite: non centra pienamente il requisito preferenziale 3+ camere. Coordinate indicative sulla via/civico. Annuncio attivo verificato il 2026-09-19 su Immobiliare.it e RE/MAX.",
+  "url": "https://www.immobiliare.it/annunci/127598156/",
+  "addedAt": "2026-09-19T09:58:48+02:00"
+}
