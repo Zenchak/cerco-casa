@@ -370,8 +370,8 @@
   {
     "id": "brusaporto-rossini6",
     "name": "Brusaporto · Via Gioacchino Rossini 6",
-    "lat": 45.6704,
-    "lng": 9.7598,
+    "lat": 45.6707,
+    "lng": 9.7607,
     "price": 269000,
     "type": "Villa singola",
     "sqm": "165 m²",
@@ -380,21 +380,22 @@
     "garage": true,
     "city": false,
     "top": false,
-    "status": "da-valutare",
+    "status": "NEW",
     "rating": "7,5/10",
     "tags": [
       "Villa singola",
-      "2 camere",
-      "1 bagno",
+      "2 camere matrimoniali",
       "Giardino ~300 m²",
-      "Box",
+      "Box incluso",
       "Taverna",
-      "Fuori parametro camere",
+      "Sottotetto",
+      "Nessuna spesa condominiale",
       "Annuncio attivo"
     ],
-    "note": "Interessante per prezzo e indipendenza: villa singola su un unico piano, giardino di circa 300 m², box, taverna e sottotetto. Il limite principale è la distribuzione attuale con sole due camere e un bagno.",
-    "warning": "FUORI PARAMETRI: oggi ha solo 2 camere e 1 bagno. Può restare nel radar perché costa 269.000 € ed è una vera villa singola; da capire se è realistico ricavare una terza camera.",
-    "url": "https://www.immobiliare.it/annunci/129464340/"
+    "note": "Interessante per indipendenza, prezzo e giardino: villa singola su un unico livello con due camere matrimoniali, taverna, sottotetto, cortile/posti auto e box. È fuori dal parametro preferenziale delle 3+ camere, quindi va valutata soprattutto per capire se il sottotetto o altri spazi possano essere sfruttati in futuro.",
+    "warning": "Fuori parametro preferenziale: solo 2 camere e 1 bagno. Annuncio Immobiliare.it rif. 129464340, aggiornato il 03/08/2026 e verificato attivo il 20/09/2026. Coordinate indicative sulla zona di Via Gioacchino Rossini: verificare il pin esatto prima di una visita.",
+    "url": "https://www.immobiliare.it/annunci/129464340/",
+    "addedAt": "2026-09-20T14:00:33+02:00"
   },
   {
     "id": "brusaporto-pioppi10",
