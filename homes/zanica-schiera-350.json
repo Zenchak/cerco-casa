@@ -1,0 +1,29 @@
+{
+  "id": "zanica-schiera-350",
+  "name": "Zanica · villetta a schiera ristrutturata",
+  "lat": 45.6405,
+  "lng": 9.6855,
+  "price": 350000,
+  "type": "Villa a schiera",
+  "sqm": "150 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": false,
+  "status": "NEW",
+  "rating": "8/10",
+  "tags": [
+    "3 camere",
+    "4 bagni",
+    "Giardino privato",
+    "Box 35 m²",
+    "Ristrutturata",
+    "3 balconi",
+    "Annuncio attivo"
+  ],
+  "note": "Villetta pronta da abitare con tre camere, quattro bagni, cucina abitabile, due zone verdi/spazio esterno, cantina e box molto ampio da 35 m². Dotazioni complete con climatizzazione, antifurto, irrigazione e serramenti in legno con doppio vetro.",
+  "warning": "ANNUNCIO ATTIVO: pubblicato il 04/09/2026 e verificato il 20/09/2026. Prezzo vicino al tetto massimo del progetto; la metratura di 150 m² è più contenuta rispetto ad altre candidate. Indirizzo preciso non pubblicato, quindi il pin è indicativo a livello comunale.",
+  "url": "https://www.wikicasa.it/annuncio/30749049",
+  "addedAt": "2026-09-20T11:02:03+02:00"
+}
