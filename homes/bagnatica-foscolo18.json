@@ -1,0 +1,32 @@
+{
+  "id": "bagnatica-foscolo18",
+  "name": "Bagnatica · Via Ugo Foscolo 18",
+  "lat": 45.6608,
+  "lng": 9.7818,
+  "price": 320000,
+  "type": "Villetta a schiera di testa",
+  "sqm": "180 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "8,5/10",
+  "tags": [
+    "3 camere",
+    "2 bagni",
+    "Giardino circa 200 m²",
+    "Orto",
+    "Box singolo ampio",
+    "Taverna",
+    "Lavanderia",
+    "Mansarda vivibile",
+    "Terrazzo",
+    "Villetta di testa"
+  ],
+  "note": "Candidata molto coerente con i criteri: villetta di testa in complesso di sole tre unità, circa 180 m², tre camere, due bagni, giardino privato di circa 200 m² più orto, taverna, lavanderia, mansarda vivibile con terrazzo e box singolo ampio. Prezzo 320.000 €, quindi vicino alla fascia obiettivo e sotto il limite massimo.",
+  "warning": "Immobile costruito nel 1970: da verificare stato reale di impianti, tetto, isolamento e serramenti, oltre alla classe energetica non indicata. Le coordinate sono indicative su Bagnatica e vanno affinate sulla posizione esatta del civico.",
+  "url": "https://www.idealista.it/immobile/35616226/",
+  "addedAt": "2026-09-20T17:00:23+02:00"
+}
