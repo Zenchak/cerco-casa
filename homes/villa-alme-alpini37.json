@@ -1,0 +1,28 @@
+{
+  "id": "villa-alme-alpini37",
+  "name": "Villa d’Almè · Via degli Alpini 37",
+  "lat": 45.7503,
+  "lng": 9.6177,
+  "price": 250000,
+  "type": "Villa a schiera",
+  "sqm": "135 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": false,
+  "status": "NEW",
+  "rating": "7,5/10",
+  "tags": [
+    "3 camere matrimoniali",
+    "2 bagni",
+    "Giardino",
+    "Box singolo",
+    "Cantina e lavanderia",
+    "Prezzo ribassato"
+  ],
+  "note": "Villetta a schiera centrale in strada privata, con zona giorno affacciata sul terrazzo vivibile e sul giardino posteriore, tre camere matrimoniali al piano superiore, due bagni, cantina/lavanderia e box singolo. A 250.000 € è nettamente sotto il budget e interessante per una famiglia, pur non essendo una soluzione di testa o bifamiliare.",
+  "warning": "DA RISTRUTTURARE e classe energetica G (410,86 kWh/m²a). Spese condominiali circa 58 €/mese. Coordinate indicative sulla via; il civico 37 è pubblicato nell’annuncio.",
+  "url": "https://www.immobiliare.it/annunci/127402003/",
+  "addedAt": "2026-09-20T05:58:34+02:00"
+}
