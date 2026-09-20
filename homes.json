@@ -1547,5 +1547,34 @@
     "warning": "Prezzo vicino al limite massimo del progetto. La certificazione energetica risulta ancora in attesa. L'annuncio indica 325 m² commerciali, di cui 140 m² abitazione al piano primo, 80 m² al piano terra e 140 m² di soffitta conteggiata al 50%: verificare in visita destinazioni d'uso e piena fruibilità degli spazi. Coordinate indicative sulla zona di Via Piave; verificare il punto esatto.",
     "url": "https://www.immobiliare.it/annunci/127620774/",
     "addedAt": "2026-09-20T22:57:45+02:00"
+  },
+  {
+    "id": "stezzano-bifamiliare340",
+    "name": "Stezzano · villa bifamiliare indipendente",
+    "lat": 45.6507,
+    "lng": 9.6518,
+    "price": 340000,
+    "type": "Villa bifamiliare / casa indipendente",
+    "sqm": "234 m²",
+    "beds": 4,
+    "garden": true,
+    "garage": true,
+    "city": false,
+    "top": false,
+    "status": "NEW",
+    "rating": "8/10",
+    "tags": [
+      "Casa indipendente",
+      "2 unità abitative",
+      "4 camere complessive",
+      "2 bagni",
+      "Giardino privato",
+      "Box incluso",
+      "Annuncio attivo"
+    ],
+    "note": "Ampia soluzione indipendente composta da due appartamenti distinti, pensata per due nuclei familiari ma potenzialmente interessante anche per chi cerca molta metratura e flessibilità. Il piano terra ha cucina abitabile, soggiorno, due camere e bagno; la proprietà dispone di giardino privato e box. Prezzo entro il tetto massimo ma sopra la zona di comfort: da verificare la reale convenienza dell'eventuale unificazione delle due unità.",
+    "warning": "Annuncio verificato attivo il 21/09/2026 e aggiornato il 27/08/2026. L'inserzionista non pubblica il civico esatto: coordinate indicative a livello comunale. Numero camere complessivo ricavato dalla configurazione delle due unità e da verificare con l'agenzia; classe energetica ancora in corso.",
+    "url": "https://www.idealista.it/immobile/36652105/",
+    "addedAt": "2026-09-21T00:00:11+02:00"
   }
 ]
