@@ -1,0 +1,30 @@
+{
+  "id": "sorisole-petosino-zambelli",
+  "name": "Sorisole · Petosino · Via Zambelli",
+  "lat": 45.7361,
+  "lng": 9.6437,
+  "price": 299000,
+  "type": "Villetta a schiera di testa",
+  "sqm": "220 m² circa",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "8,5/10",
+  "tags": [
+    "3 camere",
+    "Giardino ~70 m²",
+    "Libera su 3 lati",
+    "Garage",
+    "Taverna",
+    "Lavanderia",
+    "Solaio ~70 m²",
+    "Abitabile subito"
+  ],
+  "note": "Proposta molto centrata per rapporto prezzo/spazi: villetta di testa libera su tre lati, tre camere, giardino privato, taverna, lavanderia, cantina, garage e grande solaio. In ottimo stato e dichiarata abitabile da subito; spese condominiali molto basse (circa 100 €/anno).",
+  "warning": "Classe energetica G. Il giardino è contenuto (~70 m²) e il garage è singolo da circa 15 m². L'annuncio pubblica Via Zambelli ma non il civico: coordinate indicative sulla via.",
+  "url": "https://www.pianetaimmobiliare.org/it/vendite/v001889-sorisole-petosino-villa-a-schiera-di-testa-5015-8646",
+  "addedAt": "2026-09-20T02:00:17+02:00"
+}
