@@ -1,0 +1,30 @@
+{
+  "id": "albano-villasand-235",
+  "name": "Albano Sant'Alessandro · villa di testa",
+  "lat": 45.6868,
+  "lng": 9.7665,
+  "price": 235000,
+  "type": "Villa di testa",
+  "sqm": "208 m² (227,5 m² commerciali)",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "9/10",
+  "tags": [
+    "3 camere",
+    "2 bagni",
+    "Giardino 250 m²",
+    "Box + posto auto",
+    "Taverna 30 m²",
+    "Libera subito",
+    "Nessuna spesa condominiale",
+    "Classe F"
+  ],
+  "note": "Molto centrata sui criteri e con prezzo particolarmente interessante: villetta di testa completamente indipendente, tre camere, grande soggiorno di 50 m², giardino di 250 m², taverna esterna di 30 m² con bagno, solaio, box singolo e posto auto. Dichiarata in buone condizioni e pronta da abitare.",
+  "warning": "ANNUNCIO ATTIVO: verificato su Immobiliare.it, riferimento VillaSand, aggiornato il 24/06/2026. Il portale non pubblica la via/civico: coordinate indicative a livello comunale. Box singolo di circa 15 m². Classe energetica F, 185,87 kWh/m² anno.",
+  "url": "https://www.immobiliare.it/annunci/130171268/",
+  "addedAt": "2026-09-20T05:00:48+02:00"
+}
