@@ -1,0 +1,30 @@
+{
+  "id": "stezzano-quadrilocale-350",
+  "name": "Stezzano · quadrilocale con giardino",
+  "lat": 45.6503,
+  "lng": 9.6524,
+  "price": 350000,
+  "type": "Quadrilocale semindipendente",
+  "sqm": "166 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "8/10",
+  "tags": [
+    "3 camere",
+    "2 bagni",
+    "Giardino ~240 m²",
+    "Libero su 3 lati",
+    "Box triplo",
+    "Lavanderia",
+    "Nuovo",
+    "Pronta consegna"
+  ],
+  "note": "Non è una villa autonoma, ma è una soluzione semindipendente molto vicina ai criteri: piano terra libero su tre lati, tre camere, due bagni, lavanderia, circa 240 m² di area esterna e box triplo. Nuova e già pronta da abitare, quindi interessante se si accetta il compromesso della tipologia condominiale.",
+  "warning": "COMPROMESSO TIPOLOGIA: è un appartamento al piano terra, non una villetta. Prezzo vicino al tetto massimo. L'annuncio non pubblica il civico: coordinate indicative a livello comunale.",
+  "url": "https://www.immobiliare.it/annunci/131748612/",
+  "addedAt": "2026-09-20T03:01:07+02:00"
+}
