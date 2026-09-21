@@ -92,7 +92,8 @@
     if (active === 'garden') ok = h.garden;
     if (active === '3bed') ok = h.beds >= 3;
     const s = statusFilter.value;
-    if (s === 'new') ok = ok && isNew(h);
+    if (s === 'unrated') ok = ok && !preference(h, stateAuthor());
+    else if (s === 'new') ok = ok && isNew(h);
     else if (s !== 'all') ok = ok && combinedPreference(h) === s;
     return ok;
   }
