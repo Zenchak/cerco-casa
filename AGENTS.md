@@ -57,3 +57,10 @@ Il workflow valida automaticamente il `homes.json` generato con `npm run validat
 
 ## Pubblicazione
 Il NAS sincronizza il repository circa ogni 60 secondi. Dopo il commit del `homes.json` generato, il nuovo annuncio dovrebbe comparire sul sito entro circa un minuto.
+
+## Verifica link annunci (obbligatoria)
+- Non considerare mai un annuncio attivo solo perché compare nei risultati di Google/Bing o in una pagina categoria: gli indici possono essere obsoleti.
+- Prima di aggiungere o aggiornare una casa, apri la pagina diretta dell'annuncio e verifica che non mostri messaggi come "non più pubblicato", "rimosso", "non disponibile", 404 o redirect a una pagina generica.
+- Se il link diretto è morto, cerca lo stesso immobile su altri portali confrontando indirizzo, prezzo, metratura, foto/testo e riferimento annuncio. Salva solo un link diretto che risulti effettivamente utilizzabile.
+- Se nessun link diretto è verificabile, non presentare la casa come annuncio attivo: marca/annota l'indisponibilità invece di sostituire il link con un risultato indicizzato non verificato.
+- Per gli immobili già presenti, se viene segnalato un link rotto, verifica la pagina diretta prima di modificarlo e aggiorna il record modulare esistente; non creare un nuovo id.
