@@ -11,7 +11,7 @@
   "garage": true,
   "city": false,
   "top": true,
-  "status": "NEW",
+  "status": "da-valutare",
   "rating": "9/10",
   "tags": [
     "Villa singola",
@@ -23,10 +23,11 @@
     "Mansarda",
     "Ristrutturata",
     "Nessuna spesa condominiale",
-    "Vendita senza commissioni"
+    "Vendita senza commissioni",
+    "Link annuncio non disponibile"
   ],
   "note": "Candidata molto centrata: villa singola indipendente a Negrone, 325 m² commerciali, tre camere matrimoniali, tre bagni, giardino privato di circa 200 m² e box di 60 m² per due auto. Zona giorno oltre 50 m², taverna finestrata, mansarda e piano terra con ufficio/magazzino. L'annuncio dichiara impianti elettrici e idraulici nuovi, ottimo stato/ristrutturato e vendita senza commissioni di agenzia.",
-  "warning": "Prezzo vicino al limite massimo del progetto. La certificazione energetica risulta ancora in attesa. L'annuncio indica 325 m² commerciali, di cui 140 m² abitazione al piano primo, 80 m² al piano terra e 140 m² di soffitta conteggiata al 50%: verificare in visita destinazioni d'uso e piena fruibilità degli spazi. Coordinate indicative sulla zona di Via Piave; verificare il punto esatto.",
-  "url": "https://www.immobiliare.it/annunci/127620774/",
+  "warning": "Il link dell'annuncio segnalato non è utilizzabile. Al 21/09/2026 non c'è un link diretto funzionante verificato: non considerare l'annuncio attivo finché non viene trovata una nuova pubblicazione.",
+  "url": "",
   "addedAt": "2026-09-20T22:57:45+02:00"
 }
