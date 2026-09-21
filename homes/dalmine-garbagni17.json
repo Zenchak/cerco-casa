@@ -1,0 +1,21 @@
+{
+  "id": "dalmine-garbagni17",
+  "name": "Dalmine · Via Mario Garbagni 17",
+  "lat": 45.6516,
+  "lng": 9.6055,
+  "price": 360000,
+  "type": "Villa a schiera di testa",
+  "sqm": "180 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "8/10",
+  "tags": ["3 camere", "2 bagni", "Giardino", "2 box", "Cantina", "Villa di testa"],
+  "note": "Villetta di testa con tre camere, due bagni, giardino di circa 100 m², cantina doppia e due box. Prezzo al limite massimo del progetto.",
+  "warning": "Annuncio verificato attivo il 21/09/2026. Coordinate indicative sulla via.",
+  "url": "https://www.immobiliarepmdalmine.com/immobili/villa-dalmine-villetta-a-schiera-dalmine-c484377e",
+  "addedAt": "2026-09-21T09:00:05+02:00"
+}
