@@ -1144,7 +1144,7 @@
     "garage": true,
     "city": false,
     "top": true,
-    "status": "NEW",
+    "status": "da-valutare",
     "rating": "8,5/10",
     "tags": [
       "3 camere",
@@ -1154,11 +1154,12 @@
       "Taverna",
       "Lavanderia",
       "Interni rifiniti 2021",
-      "Pronta da vivere"
+      "Pronta da vivere",
+      "Link annuncio non disponibile"
     ],
     "note": "Molto interessante per rapporto prezzo/spazi: 205 m², tre camere, due bagni, giardino esclusivo di circa 140 m², portico, cucina abitabile, taverna e lavanderia. Gli interni sono stati ultimati e rifiniti nel 2021 e l'annuncio la descrive in condizioni eccellenti, senza lavori immediati.",
-    "warning": "Da chiarire il costo del box: la descrizione dell'inserzionista indica possibilità di box singolo a 15.000 € aggiuntivi, mentre Casa.it riporta box incluso nel prezzo di 287.000 €. Classe energetica G. Coordinate indicative sulla via; civico non pubblicato.",
-    "url": "https://www.casa.it/immobili/53419200/",
+    "warning": "Il precedente annuncio Casa.it (53419200) restituisce 404. Al 21/09/2026 non c'è un link diretto funzionante verificato: non considerare l'annuncio attivo finché non viene trovata una nuova pubblicazione.",
+    "url": "",
     "addedAt": "2026-09-19T14:58:52+02:00"
   },
   {
