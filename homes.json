@@ -1292,7 +1292,7 @@
     "garage": true,
     "city": false,
     "top": true,
-    "status": "NEW",
+    "status": "da-valutare",
     "rating": "8/10",
     "tags": [
       "3 camere",
@@ -1302,11 +1302,12 @@
       "Box triplo",
       "Lavanderia",
       "Nuovo",
-      "Pronta consegna"
+      "Pronta consegna",
+      "Link annuncio non disponibile"
     ],
     "note": "Non è una villa autonoma, ma è una soluzione semindipendente molto vicina ai criteri: piano terra libero su tre lati, tre camere, due bagni, lavanderia, circa 240 m² di area esterna e box triplo. Nuova e già pronta da abitare, quindi interessante se si accetta il compromesso della tipologia condominiale.",
-    "warning": "COMPROMESSO TIPOLOGIA: è un appartamento al piano terra, non una villetta. Prezzo vicino al tetto massimo. L'annuncio non pubblica il civico: coordinate indicative a livello comunale.",
-    "url": "https://www.immobiliare.it/annunci/131748612/",
+    "warning": "Il precedente annuncio Immobiliare.it (131748612) non è più disponibile. Al 21/09/2026 non c'è un link diretto funzionante verificato: non considerare l'annuncio attivo finché non viene trovata una nuova pubblicazione.",
+    "url": "",
     "addedAt": "2026-09-20T03:01:07+02:00"
   },
   {
