@@ -40,7 +40,7 @@
   }
 
   function popup(h) {
-    return `<h3>${h.name}</h3><b>${euro(h.price)}</b><div style="margin:4px 0 8px;color:#666">${h.type} · ${h.sqm}</div><div>${h.note}</div><div style="margin-top:8px"><a href="${h.url}" target="_blank" rel="noopener" data-open-home="${h.id}">Apri annuncio</a></div>`;
+    return `<h3>${h.name}</h3><b>${euro(h.price)}</b><div style="margin:4px 0 8px;color:#666">${h.type} · ${h.sqm}</div><div>${h.note}</div>${h.url ? `<div style="margin-top:8px"><a href="${h.url}" target="_blank" rel="noopener" data-open-home="${h.id}">Apri annuncio</a></div>` : ``}`;
   }
 
   homes.forEach(h => {
@@ -262,7 +262,7 @@
   function cardHtml(h) {
     const newBadge = isNew(h) ? '<span class="new-badge">NEW</span>' : '';
     const addedChip = h.addedAt ? `<span class="chip">Aggiunta ${formatDate(h.addedAt, false)}</span>` : '';
-    return `<div style="display:flex;justify-content:space-between;gap:12px"><div><div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap"><h2>${h.name}</h2>${newBadge}</div><div class="meta">${h.type} · ${h.sqm}</div></div><div class="price">${euro(h.price)}</div></div><div class="chips">${h.tags.map(t => `<span class="chip">${t}</span>`).join('')}<span class="chip rating">${h.rating}</span>${addedChip}</div><div class="note">${h.note}</div><div class="warning" style="font-size:12px;margin-top:8px">${h.warning || ''}</div><div class="reactions"><div class="reactions-title">Le vostre impressioni</div>${reactionRow(h, 'Bogdan')}${reactionRow(h, 'Camilla')}</div><div class="actions"><a class="secondary" href="#map" data-map="${h.id}">Mappa</a><a class="primary" href="${h.url}" target="_blank" rel="noopener" data-open-home="${h.id}">Annuncio</a><button class="secondary" type="button" data-add-note="${h.id}">＋ Nota</button></div><div class="user-notes"><div class="user-notes-title"><span>Note vostre</span><span>${visibleNotes(h.id).length}</span></div><div class="note-list" data-notes-for="${h.id}"></div></div>`;
+    return `<div style="display:flex;justify-content:space-between;gap:12px"><div><div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap"><h2>${h.name}</h2>${newBadge}</div><div class="meta">${h.type} · ${h.sqm}</div></div><div class="price">${euro(h.price)}</div></div><div class="chips">${h.tags.map(t => `<span class="chip">${t}</span>`).join('')}<span class="chip rating">${h.rating}</span>${addedChip}</div><div class="note">${h.note}</div><div class="warning" style="font-size:12px;margin-top:8px">${h.warning || ''}</div><div class="reactions"><div class="reactions-title">Le vostre impressioni</div>${reactionRow(h, 'Bogdan')}${reactionRow(h, 'Camilla')}</div><div class="actions"><a class="secondary" href="#map" data-map="${h.id}">Mappa</a>${h.url ? `<a class="primary" href="${h.url}" target="_blank" rel="noopener" data-open-home="${h.id}">Annuncio</a>` : `<span class="secondary" style="opacity:.55;cursor:not-allowed">Annuncio non disponibile</span>`}<button class="secondary" type="button" data-add-note="${h.id}">＋ Nota</button></div><div class="user-notes"><div class="user-notes-title"><span>Note vostre</span><span>${visibleNotes(h.id).length}</span></div><div class="note-list" data-notes-for="${h.id}"></div></div>`;
   }
 
   function render() {
