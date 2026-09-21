@@ -1380,7 +1380,7 @@
     "garage": true,
     "city": false,
     "top": true,
-    "status": "NEW",
+    "status": "da-valutare",
     "rating": "9/10",
     "tags": [
       "Villa singola",
@@ -1388,11 +1388,11 @@
       "2 bagni",
       "Lotto ~1.000 m²",
       "Ampio giardino",
-      "Annuncio attivo"
+      "Link annuncio non disponibile"
     ],
-    "note": "Villa indipendente su due livelli fuori terra, in zona residenziale, con tre camere e grande giardino perimetrale su lotto di circa 1.000 m². A 339.000 € rientra nel tetto massimo ed è molto centrata per indipendenza e spazio esterno. Link diretto aggiornato il 21/09/2026 alla scheda Attico.it dell'immobile (codice 54234610, rif. 34001003-978), verificata.",
-    "warning": "Coordinate indicative a livello comunale/via: verificare il punto esatto in visita e approfondire stato interno, classe energetica e caratteristiche del garage prima di considerarla pronta all'acquisto.Link diretto: Attico.it, codice annuncio 54234610 (rif. immobile 34001003-978), verificato il 21/09/2026.",
-    "url": "https://www.attico.it/immobile-villa-lombardia-azzano-san-paolo-54234610/",
+    "note": "Villa indipendente su due livelli fuori terra, in zona residenziale, con tre camere e grande giardino perimetrale su lotto di circa 1.000 m². A 339.000 € rientra nel tetto massimo ed è molto centrata per indipendenza e spazio esterno.",
+    "warning": "Il link RE/MAX reindirizza alla ricerca generale e la copia Attico.it risulta non disponibile. Al 21/09/2026 non c'è un link diretto funzionante verificato: non considerare l'annuncio attivo finché non viene trovata una nuova pubblicazione.",
+    "url": "",
     "addedAt": "2026-09-20T07:58:59+02:00"
   },
   {
@@ -1529,7 +1529,7 @@
     "garage": true,
     "city": false,
     "top": true,
-    "status": "NEW",
+    "status": "da-valutare",
     "rating": "9/10",
     "tags": [
       "Villa singola",
@@ -1541,11 +1541,12 @@
       "Mansarda",
       "Ristrutturata",
       "Nessuna spesa condominiale",
-      "Vendita senza commissioni"
+      "Vendita senza commissioni",
+      "Link annuncio non disponibile"
     ],
     "note": "Candidata molto centrata: villa singola indipendente a Negrone, 325 m² commerciali, tre camere matrimoniali, tre bagni, giardino privato di circa 200 m² e box di 60 m² per due auto. Zona giorno oltre 50 m², taverna finestrata, mansarda e piano terra con ufficio/magazzino. L'annuncio dichiara impianti elettrici e idraulici nuovi, ottimo stato/ristrutturato e vendita senza commissioni di agenzia.",
-    "warning": "Prezzo vicino al limite massimo del progetto. La certificazione energetica risulta ancora in attesa. L'annuncio indica 325 m² commerciali, di cui 140 m² abitazione al piano primo, 80 m² al piano terra e 140 m² di soffitta conteggiata al 50%: verificare in visita destinazioni d'uso e piena fruibilità degli spazi. Coordinate indicative sulla zona di Via Piave; verificare il punto esatto.",
-    "url": "https://www.immobiliare.it/annunci/127620774/",
+    "warning": "Il link dell'annuncio segnalato non è utilizzabile. Al 21/09/2026 non c'è un link diretto funzionante verificato: non considerare l'annuncio attivo finché non viene trovata una nuova pubblicazione.",
+    "url": "",
     "addedAt": "2026-09-20T22:57:45+02:00"
   },
   {
