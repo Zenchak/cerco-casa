@@ -849,7 +849,7 @@
     "garage": true,
     "city": false,
     "top": true,
-    "status": "NEW",
+    "status": "da-valutare",
     "rating": "9/10",
     "tags": [
       "4 camere",
@@ -860,11 +860,11 @@
       "Cantina >70 m²",
       "Classe D",
       "Nese",
-      "Annuncio attivo"
+      "Link annuncio non disponibile"
     ],
     "note": "Molto centrata per una famiglia: villa di testa di grande metratura, quattro camere, tripli servizi, giardino con porticato, grande soggiorno con camino, cucina abitabile e spazi accessori eccezionali. A piano terra ci sono un box singolo da 22 m² e un secondo box di quasi 100 m², oltre a lavanderia; cantina di oltre 70 m² all'interrato. Serramenti recentemente sostituiti e nessuna spesa condominiale.",
-    "warning": "ANNUNCIO ATTIVO verificato il 2026-09-19 sulla pagina diretta Immobiliare.it (rif. 127474738). L'annuncio pubblica il civico; coordinate indicative da verificare. Metratura molto ampia e distribuita su più livelli: da valutare in visita quanto spazio sia realmente utile nell'uso quotidiano.",
-    "url": "https://www.immobiliare.it/annunci/127474738/",
+    "warning": "Annuncio disattivato: lo storico pubblico indica disattivazione il 14/05/2026. Link rimosso dall'Hub il 21/09/2026.",
+    "url": "",
     "addedAt": "2026-09-19T03:58:15+02:00"
   },
   {
