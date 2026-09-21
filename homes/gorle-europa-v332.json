@@ -11,7 +11,7 @@
   "garage": false,
   "city": false,
   "top": true,
-  "status": "NEW",
+  "status": "da-valutare",
   "rating": "8,5/10",
   "tags": [
     "3 camere matrimoniali",
@@ -19,10 +19,11 @@
     "3/4 posti auto interni",
     "Ingresso indipendente",
     "Buono stato",
-    "2008"
+    "2008",
+    "Link annuncio non disponibile"
   ],
   "note": "Molto interessante per posizione vicinissima a Bergamo, prezzo e metratura: abitazione in bifamiliare con ingresso indipendente, tre camere matrimoniali, grande zona giorno e circa 300 m² di giardino. Ha lavanderia, cantina e quota del sottotetto. Il compromesso principale è l'assenza di un vero box: l'annuncio indica invece un reparto auto interno per 3/4 veicoli.",
-  "warning": "ANNUNCIO ATTIVO: verificato sul sito diretto Ital Home Bergamo, riferimento V332. Non risulta un garage/box chiuso; presenti 3/4 posti auto all'interno della proprietà. Posizione indicativa su Via Europa perché il civico esatto non è pubblicato.",
-  "url": "https://bergamoital-home.it/annunci/57787/gorle-villa-bifamiliare-giardino-300mq-reparto-auto-libera-su-4-lati",
+  "warning": "Il link diretto Ital Home restituisce errore 404. Al 21/09/2026 non c'è un link diretto funzionante verificato: non considerare l'annuncio attivo finché non viene trovata una nuova pubblicazione.",
+  "url": "",
   "addedAt": "2026-09-20T03:58:08+02:00"
 }
