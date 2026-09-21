@@ -2,7 +2,7 @@
   "id": "azzano-santagostino3",
   "name": "Azzano San Paolo · Via Sant'Agostino 3",
   "lat": 45.6575,
-  "lng": 9.6750,
+  "lng": 9.675,
   "price": 339000,
   "type": "Villa singola",
   "sqm": "256 m²",
@@ -13,9 +13,16 @@
   "top": true,
   "status": "NEW",
   "rating": "9/10",
-  "tags": ["Villa singola", "3 camere", "2 bagni", "Lotto ~1.000 m²", "Ampio giardino", "Annuncio attivo"],
-  "note": "Villa indipendente su due livelli fuori terra, in zona residenziale, con tre camere e grande giardino perimetrale su lotto di circa 1.000 m². A 339.000 € rientra nel tetto massimo ed è molto centrata per indipendenza e spazio esterno.",
+  "tags": [
+    "Villa singola",
+    "3 camere",
+    "2 bagni",
+    "Lotto ~1.000 m²",
+    "Ampio giardino",
+    "Annuncio attivo"
+  ],
+  "note": "Villa indipendente su due livelli fuori terra, in zona residenziale, con tre camere e grande giardino perimetrale su lotto di circa 1.000 m². A 339.000 € rientra nel tetto massimo ed è molto centrata per indipendenza e spazio esterno. Link diretto aggiornato il 21/09/2026 alla scheda Attico.it dell'immobile (codice 54234610, rif. 34001003-978), verificata.",
   "warning": "Annuncio verificato attivo il 20/09/2026. Coordinate indicative a livello comunale/via: verificare il punto esatto in visita e approfondire stato interno, classe energetica e caratteristiche del garage prima di considerarla pronta all'acquisto.",
-  "url": "https://www.remax.it/trova/immobile/Villa-Singola-In-Vendita-Azzano-San-Paolo_34001003-978",
+  "url": "https://www.attico.it/immobile-villa-lombardia-azzano-san-paolo-54234610/",
   "addedAt": "2026-09-20T07:58:59+02:00"
 }
