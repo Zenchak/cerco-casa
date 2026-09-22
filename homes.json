@@ -1537,5 +1537,31 @@
     "warning": "Annuncio diretto TrovaCasa visibile al 22/09/2026. Riferimento 61254627. Boltiere è più esterna rispetto al nucleo principale della ricerca: candidata da valutare.",
     "url": "https://www.trovacasa.it/annunci/bg-tc-88770-72873427",
     "addedAt": "2026-09-22T11:20:00+02:00"
+  },
+  {
+    "id": "presezzo-leopardi14-34731035-105",
+    "name": "Presezzo · Via Leopardi 14",
+    "lat": 45.694,
+    "lng": 9.57,
+    "price": 310000,
+    "type": "Villa a schiera",
+    "sqm": "136 m²",
+    "beds": 3,
+    "garden": true,
+    "garage": false,
+    "city": false,
+    "top": true,
+    "status": "NEW",
+    "rating": "8/10",
+    "tags": [
+      "4 locali",
+      "Giardino privato",
+      "Villa a schiera",
+      "Da approfondire"
+    ],
+    "note": "Villa a schiera a Presezzo, Via Leopardi 14, 136 m² e 4 locali, proposta a 310.000 €. Soluzione recente con giardino privato. Da approfondire numero esatto di camere e bagni, presenza e dimensioni del box e condizioni economiche complete.",
+    "warning": "Annuncio diretto TrovaCasa visibile al 22/09/2026. Riferimento RE/MAX 34731035-105.",
+    "url": "https://www.trovacasa.it/annunci/bg-tc-70238-72922731",
+    "addedAt": "2026-09-22T11:25:00+02:00"
   }
 ]
