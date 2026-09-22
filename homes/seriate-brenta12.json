@@ -1,0 +1,21 @@
+{
+  "id": "seriate-brenta12",
+  "name": "Seriate · Via Brenta 12",
+  "lat": 45.684,
+  "lng": 9.724,
+  "price": 315000,
+  "type": "Villa a schiera",
+  "sqm": "150 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "8,5/10",
+  "tags": ["3 camere", "3 bagni", "Giardino ~120 m²", "Box doppio", "Taverna", "Lavanderia", "Libera subito"],
+  "note": "Molto centrata sui criteri: tre camere, tre bagni, giardino su due fronti, taverna e box doppio in larghezza. Zona residenziale interna e prezzo dentro budget.",
+  "warning": "Pagina diretta verificata attiva il 2026-09-22. Coordinate indicative sulla via.",
+  "url": "https://www.immobiliare.it/annunci/131181184/",
+  "addedAt": "2026-09-22T11:42:00+02:00"
+}
