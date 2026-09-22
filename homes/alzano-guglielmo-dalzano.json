@@ -1,0 +1,21 @@
+{
+  "id": "alzano-guglielmo-dalzano",
+  "name": "Alzano Lombardo · Via Guglielmo d'Alzano",
+  "lat": 45.736,
+  "lng": 9.735,
+  "price": 319000,
+  "type": "Villetta a schiera",
+  "sqm": "176 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "9/10",
+  "tags": ["3 camere", "2 bagni", "Giardino ~115 m²", "Box doppio", "Taverna", "Lavanderia", "1991", "Annuncio attivo"],
+  "note": "Molto centrata sui criteri: tre camere, giardino privato fronte/retro di circa 115 m², taverna, lavanderia e box doppio; zona Le Piante al confine con Ranica, comoda al tram e ai servizi.",
+  "warning": "ANNUNCIO ATTIVO: pagina diretta Casa.it verificata il 2026-09-22, ultimo aggiornamento annuncio 18/09/2026. L'inserzionista non pubblica il civico esatto; coordinate indicative sulla zona/via. Classe energetica G. La scheda strutturata Casa.it indica 'box singolo', mentre la descrizione dell'annuncio specifica box doppio in larghezza: da verificare in visita.",
+  "url": "https://www.casa.it/immobili/54750615/",
+  "addedAt": "2026-09-22T20:00:00+02:00"
+}
