@@ -1511,5 +1511,31 @@
     "warning": "Annuncio diretto visibile su TrovaCasa al 22/09/2026. Riferimento RE/MAX 34731035-112. Coordinate indicative a livello comunale finché non è disponibile l'indirizzo esatto.",
     "url": "https://www.trovacasa.it/annunci/bg-tc-70238-73049163",
     "addedAt": "2026-09-22T11:15:00+02:00"
+  },
+  {
+    "id": "boltiere-manzu-61254627",
+    "name": "Boltiere · Via Manzù",
+    "lat": 45.6008,
+    "lng": 9.5788,
+    "price": 319000,
+    "type": "Villa a schiera",
+    "sqm": "190 m²",
+    "beds": 3,
+    "garden": true,
+    "garage": false,
+    "city": false,
+    "top": true,
+    "status": "NEW",
+    "rating": "8/10",
+    "tags": [
+      "4 locali",
+      "Giardino privato",
+      "Villa a schiera",
+      "Da approfondire"
+    ],
+    "note": "Villa a schiera a Boltiere in Via Manzù, 190 m² e 4 locali, proposta a 319.000 €. Dalle immagini si vede un ampio giardino privato e una soluzione su più livelli. Da approfondire numero di bagni, autorimessa/box, spese e stato degli impianti.",
+    "warning": "Annuncio diretto TrovaCasa visibile al 22/09/2026. Riferimento 61254627. Boltiere è più esterna rispetto al nucleo principale della ricerca: candidata da valutare.",
+    "url": "https://www.trovacasa.it/annunci/bg-tc-88770-72873427",
+    "addedAt": "2026-09-22T11:20:00+02:00"
   }
 ]
