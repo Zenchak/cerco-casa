@@ -1484,5 +1484,32 @@
     "warning": "Annuncio verificato attivo il 21/09/2026. Coordinate indicative sulla via.",
     "url": "https://www.immobiliarepmdalmine.com/immobili/villa-dalmine-villetta-a-schiera-dalmine-c484377e",
     "addedAt": "2026-09-21T09:00:05+02:00"
+  },
+  {
+    "id": "ponte-san-pietro-34731035-112",
+    "name": "Ponte San Pietro · villa a schiera",
+    "lat": 45.696,
+    "lng": 9.586,
+    "price": 310000,
+    "type": "Villa a schiera",
+    "sqm": "136 m²",
+    "beds": 3,
+    "garden": true,
+    "garage": false,
+    "city": false,
+    "top": true,
+    "status": "NEW",
+    "rating": "8/10",
+    "tags": [
+      "4 locali",
+      "Giardino",
+      "Nuova / recente",
+      "RE/MAX",
+      "Da approfondire"
+    ],
+    "note": "Villa a schiera a Ponte San Pietro, 136 m² e 4 locali, proposta a 310.000 €. Dalle immagini risulta una soluzione recente con giardino privato. Da approfondire distribuzione interna, numero esatto di camere/bagni e presenza del box.",
+    "warning": "Annuncio diretto visibile su TrovaCasa al 22/09/2026. Riferimento RE/MAX 34731035-112. Coordinate indicative a livello comunale finché non è disponibile l'indirizzo esatto.",
+    "url": "https://www.trovacasa.it/annunci/bg-tc-70238-73049163",
+    "addedAt": "2026-09-22T11:15:00+02:00"
   }
 ]
