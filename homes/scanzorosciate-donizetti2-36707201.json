@@ -1,0 +1,21 @@
+{
+  "id": "scanzorosciate-donizetti2-36707201",
+  "name": "Villa in Via Gaetano Donizetti 2",
+  "lat": 45.711,
+  "lng": 9.737,
+  "price": 310000,
+  "type": "Villa singola",
+  "sqm": 227,
+  "beds": 3,
+  "garden": true,
+  "garage": false,
+  "city": "Scanzorosciate",
+  "top": false,
+  "status": "NEW",
+  "rating": 0,
+  "tags": ["3 camere", "giardino 280 mq", "2 unità/impianti separati", "libera"],
+  "note": "Villetta singola su due piani da circa 101 mq ciascuno, tre camere complessive e giardino sui quattro lati di circa 280 mq. I due piani hanno impianti separati.",
+  "warning": "L'annuncio non indica un box/garage; verificare possibilità di parcheggio coperto. Coordinate indicative ricavate dall'indirizzo pubblico.",
+  "url": "https://www.idealista.it/immobile/36707201/",
+  "addedAt": "2026-09-23T14:45:00+02:00"
+}
