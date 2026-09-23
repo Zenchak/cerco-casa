@@ -1,0 +1,21 @@
+{
+  "id": "treviolo-tiepolo14",
+  "name": "Treviolo · Via G. Tiepolo 14",
+  "lat": 45.6745,
+  "lng": 9.611,
+  "price": 355000,
+  "type": "Villa singola",
+  "sqm": "258 m² commerciali",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": false,
+  "status": "NEW",
+  "rating": "7,5/10?",
+  "tags": ["Villa singola", "3 camere", "Giardino ~500 m²", "Box singolo", "Piano abitativo unico", "Classe G", "Annuncio attivo"],
+  "note": "Villa singola con parte abitativa principale di circa 130 m² su un unico piano, tre camere, cucina abitabile, ampia soffitta/mansarda, garage e giardino dichiarato di circa 500 m². Dentro budget ma molto vicina al tetto massimo e con un solo bagno.",
+  "warning": "ANNUNCIO ATTIVO: pagina diretta Casa.it verificata. L'annuncio descrive il giardino come privato di circa 500 m², mentre la scheda caratteristiche riporta 'giardino comune': da chiarire con l'agenzia. Edificio del 1965, classe G. Coordinate indicative sul civico pubblicato.",
+  "url": "https://www.casa.it/immobili/54340960/",
+  "addedAt": "2026-09-23T14:48:00+02:00"
+}
