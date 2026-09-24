@@ -1,0 +1,29 @@
+{
+  "id": "levate-statuto5a",
+  "name": "Levate · Via Statuto 5/A",
+  "lat": 45.625,
+  "lng": 9.625,
+  "price": 349000,
+  "type": "Villa a schiera",
+  "sqm": "173 m²",
+  "beds": 3,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": true,
+  "status": "NEW",
+  "rating": "8,5/10",
+  "tags": [
+    "3 camere",
+    "2 bagni",
+    "Giardino fronte/retro",
+    "Box doppio in lunghezza",
+    "Taverna",
+    "Classe C",
+    "110% nel 2023"
+  ],
+  "note": "Molto centrata sui criteri: villetta a schiera di 173 m² con tre camere ampie, due bagni, giardino davanti e dietro, box doppio in lunghezza e taverna. Lavori Superbonus eseguiti nel 2023.",
+  "warning": "Prezzo vicino al tetto massimo ma dentro budget. Coordinate indicative sulla via/civico da verificare.",
+  "url": "https://www.immobiliare.it/annunci/132710662/",
+  "addedAt": "2026-09-24T13:58:53+02:00"
+}
