@@ -325,7 +325,7 @@ async function handleHubAuth(req, res, u) {
     res.writeHead(302, {
       'set-cookie': sessionCookie(user),
       'cache-control': 'no-store',
-      'location': '/passkeys/'
+      'location': '/'
     });
     res.end();
     return true;
