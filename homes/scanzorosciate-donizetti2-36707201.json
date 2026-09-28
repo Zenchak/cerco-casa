@@ -9,11 +9,16 @@
   "beds": 3,
   "garden": true,
   "garage": false,
-  "city": "Scanzorosciate",
+  "city": false,
   "top": false,
   "status": "NEW",
   "rating": 0,
-  "tags": ["3 camere", "giardino 280 mq", "2 unità/impianti separati", "libera"],
+  "tags": [
+    "3 camere",
+    "giardino 280 mq",
+    "2 unità/impianti separati",
+    "libera"
+  ],
   "note": "Villetta singola su due piani da circa 101 mq ciascuno, tre camere complessive e giardino sui quattro lati di circa 280 mq. I due piani hanno impianti separati.",
   "warning": "L'annuncio non indica un box/garage; verificare possibilità di parcheggio coperto. Coordinate indicative ricavate dall'indirizzo pubblico.",
   "url": "https://www.idealista.it/immobile/36707201/",
