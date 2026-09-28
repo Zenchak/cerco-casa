@@ -10,8 +10,8 @@
   "garden": true,
   "garage": true,
   "city": true,
-  "top": true,
-  "status": "NEW",
+  "top": false,
+  "status": "da-valutare",
   "rating": "9/10",
   "tags": [
     "3 camere",
@@ -21,10 +21,11 @@
     "Posto auto coperto",
     "Taverna",
     "Lavanderia",
-    "Fotovoltaico 6 kW con accumulo"
+    "Fotovoltaico 6 kW con accumulo",
+    "Link annuncio non disponibile"
   ],
   "note": "Molto centrata sui criteri: in città, posizione interna e riservata, tre camere, due bagni, giardino privato, box e posto auto coperto. Al piano interrato dispone anche di taverna finestrata e lavanderia; presenti climatizzazione e fotovoltaico da 6 kW con accumulo.",
-  "warning": "Link diretto Casa.it verificato attivo il 28/09/2026. Rif. immobile 608435. Posizione indicativa sulla via: il civico esatto non è pubblicato.",
-  "url": "https://www.casa.it/immobili/54768469/",
+  "warning": "ANNUNCIO NON PIÙ DISPONIBILE: la pagina Casa.it indica che l'agenzia ha cancellato l'annuncio il 21/09/2026. Anche il precedente link TrovaCasa non è più valido. Al 28/09/2026 non è stato trovato un link diretto alternativo verificato per lo stesso immobile.",
+  "url": "",
   "addedAt": "2026-09-22T11:40:00+02:00"
 }
