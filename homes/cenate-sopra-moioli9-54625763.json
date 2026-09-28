@@ -1,0 +1,31 @@
+{
+  "id": "cenate-sopra-moioli9-54625763",
+  "name": "Cenate Sopra · Via Moioli 9",
+  "lat": 45.714,
+  "lng": 9.81,
+  "price": 350000,
+  "type": "Villa singola bifamiliare",
+  "sqm": "352 m²",
+  "beds": 4,
+  "garden": true,
+  "garage": true,
+  "city": false,
+  "top": false,
+  "status": "NEW",
+  "rating": "7/10",
+  "tags": [
+    "Villa singola",
+    "2 appartamenti",
+    "Giardino/terreno",
+    "2 box",
+    "6 locali",
+    "Da riqualificare",
+    "A reddito",
+    "Dentro budget",
+    "Annuncio attivo"
+  ],
+  "note": "Grande villa singola composta da due trilocali indipendenti, con terreno e due box. Molta metratura e indipendenza, ma è una soluzione più complessa del target standard e richiede valutazione della riqualificazione e della situazione locativa.",
+  "warning": "Annuncio diretto Casa.it verificato attivo il 28/09/2026. La descrizione indica immobile attualmente locato/a reddito ma anche stato al rogito libero: chiarire con l'agenzia. Coordinate indicative sul civico. Classe G.",
+  "url": "https://www.casa.it/immobili/54625763/",
+  "addedAt": "2026-09-28T20:50:00+02:00"
+}
