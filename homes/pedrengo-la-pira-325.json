@@ -10,12 +10,22 @@
   "garden": true,
   "garage": true,
   "city": false,
-  "top": true,
-  "status": "NEW",
+  "top": false,
+  "status": "da-valutare",
   "rating": "8,5/10",
-  "tags": ["3 camere", "2 bagni", "Giardino ~250 m²", "Garage triplo", "Taverna", "Cantina", "Ingresso indipendente", "Privato"],
+  "tags": [
+    "3 camere",
+    "2 bagni",
+    "Giardino ~250 m²",
+    "Garage triplo",
+    "Taverna",
+    "Cantina",
+    "Ingresso indipendente",
+    "Privato",
+    "Link annuncio non disponibile"
+  ],
   "note": "Soluzione molto centrata per rapporto prezzo/spazi: piano terra di villa libero su tre lati, tre camere, giardino privato di oltre 250 m², taverna con camino, secondo bagno, cantina, garage triplo collegato internamente e posto auto esterno. Vendita da privato, senza agenzia.",
-  "warning": "Non è una villa singola: è un appartamento in villa con ingresso indipendente. Coordinate indicative a livello di Pedrengo/via; la posizione esatta va confermata. Annuncio diretto Immobiliare.it verificato attivo il 21/09/2026 e aggiornato il 02/09/2026.",
-  "url": "https://www.immobiliare.it/annunci/122857156/",
+  "warning": "Annuncio non più disponibile: il link diretto Immobiliare.it 122857156 risulta non disponibile al 28/09/2026. Non considerare l'immobile attivo finché non viene trovata una ripubblicazione diretta funzionante.",
+  "url": "",
   "addedAt": "2026-09-21T14:57:35+02:00"
 }
