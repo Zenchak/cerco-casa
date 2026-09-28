@@ -9,11 +9,16 @@
   "beds": 3,
   "garden": true,
   "garage": true,
-  "city": "Grassobbio",
+  "city": false,
   "top": false,
   "status": "NEW",
   "rating": 0,
-  "tags": ["3 camere", "giardino", "2 box", "libera su 3 lati"],
+  "tags": [
+    "3 camere",
+    "giardino",
+    "2 box",
+    "libera su 3 lati"
+  ],
   "note": "Villa bifamiliare libera su tre lati: zona giorno al piano terra, tre camere al primo piano, taverna al piano interrato; due box singoli. Prezzo al limite massimo di ricerca.",
   "warning": "Coordinate indicative: l'annuncio indica Via Vincenzo Epis ma non il civico esatto.",
   "url": "https://www.idealista.it/immobile/34760713/",
