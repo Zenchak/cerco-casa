@@ -55,10 +55,14 @@ homes.forEach((h, i) => {
   if (ids.has(h.id)) errors.push(`${pos}: id duplicato con elemento ${ids.get(h.id) + 1}`);
   else ids.set(h.id, i);
 
-  const nu = normalizeUrl(h.url);
-  if (!/^https?:\/\//.test(String(h.url || ''))) errors.push(`${pos}: url non valida`);
-  if (urls.has(nu)) errors.push(`${pos}: URL duplicato con elemento ${urls.get(nu) + 1}`);
-  else urls.set(nu, i);
+  const rawUrl = String(h.url || '').trim();
+  const unavailableWithoutUrl = h.status === 'da-valutare' && rawUrl === '';
+  const nu = normalizeUrl(rawUrl);
+  if (!unavailableWithoutUrl && !/^https?:\/\//.test(rawUrl)) errors.push(`${pos}: url non valida`);
+  if (rawUrl) {
+    if (urls.has(nu)) errors.push(`${pos}: URL duplicato con elemento ${urls.get(nu) + 1}`);
+    else urls.set(nu, i);
+  }
 
   if (!Number.isFinite(h.lat) || h.lat < -90 || h.lat > 90) errors.push(`${pos}: lat non valida`);
   if (!Number.isFinite(h.lng) || h.lng < -180 || h.lng > 180) errors.push(`${pos}: lng non valida`);
