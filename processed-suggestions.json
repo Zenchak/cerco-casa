@@ -14,5 +14,13 @@
     "url": "https://www.casa.it/immobili/53422148/",
     "processedAt": "2026-09-17T12:30:31+02:00",
     "source": "manual-enrichment-from-user-screenshot-and-indexed-listing"
+  },
+  {
+    "id": "1790884240644-w0htuu",
+    "status": "duplicate",
+    "homeId": "seriate-brenta12",
+    "url": "https://www.immobiliare.it/annunci/131181184/?utm_source=navigator-share&utm_medium=share",
+    "processedAt": "2026-10-01T19:50:43.480Z",
+    "reason": "URL già presente"
   }
 ]
