@@ -2707,5 +2707,63 @@
     "warning": "ANNUNCIO ATTIVO: pagina diretta Idealista verificata il 24/09/2026; lo stesso immobile risulta pubblicato anche su Casa.it. Coordinate indicative a livello di Zanica/Via Dante Alighieri: verificare il pin esatto in visita.",
     "url": "https://www.idealista.it/immobile/36722083/",
     "addedAt": "2026-09-24T02:00:00+02:00"
+  },
+  {
+    "id": "mozzo-bonacina4-132996890",
+    "name": "Mozzo · Via Fratelli Bonacina 4",
+    "lat": 45.698,
+    "lng": 9.609,
+    "price": 309000,
+    "type": "Villa a schiera",
+    "sqm": "127 m²",
+    "beds": 3,
+    "garden": true,
+    "garage": true,
+    "city": false,
+    "top": true,
+    "status": "NEW",
+    "rating": "8.5/10",
+    "tags": [
+      "3 camere",
+      "2 bagni",
+      "2 giardini",
+      "Taverna",
+      "Lavanderia",
+      "Box singolo",
+      "Terrazzo"
+    ],
+    "note": "Villetta a schiera di 127 m² con tre camere, due bagni, due giardini, terrazzo, taverna, lavanderia e box.",
+    "warning": "Segnalata da Camilla il 02/10/2026. Annuncio verificato tramite copie attive cross-portal; rif. esterno 132996890.",
+    "url": "https://www.wikicasa.it/annuncio/30969693",
+    "addedAt": "2026-10-06T21:55:00+02:00"
+  },
+  {
+    "id": "bergamo-rampinelli94-54552791",
+    "name": "Bergamo · Via Giovanni Battista Rampinelli 94",
+    "lat": 45.68,
+    "lng": 9.63,
+    "price": 289000,
+    "type": "Villetta a schiera",
+    "sqm": "210 m²",
+    "beds": 3,
+    "garden": true,
+    "garage": true,
+    "city": true,
+    "top": true,
+    "status": "NEW",
+    "rating": "9/10",
+    "tags": [
+      "3 camere + mansarda",
+      "2 bagni",
+      "Giardino 60 m²",
+      "Box ~65 m²",
+      "Posto auto",
+      "Classe D",
+      "Libera subito"
+    ],
+    "note": "Villetta a schiera libera su due lati, tre camere più mansarda/studio, due bagni, giardino, terrazzi e grande autorimessa di circa 65-67 m². Pronta da abitare e libera subito.",
+    "warning": "Segnalata da Camilla il 06/10/2026. La pagina Casa.it condivisa è stata verificata tramite copia attiva Attico.it, codice 54552791.",
+    "url": "https://www.attico.it/immobile-villetta-a-schiera-lombardia-bergamo-54552791/",
+    "addedAt": "2026-10-06T21:55:00+02:00"
   }
 ]
