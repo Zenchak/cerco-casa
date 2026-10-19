@@ -52,7 +52,7 @@
     sharedStates = {};
     homes.forEach(h => {
       const rows = sharedNotes[stateKey(h.id)] || [];
-      const state = { preferences: {}, seenAt: null, updatedAt: null };
+      const state = { preferences: {}, seenAt: null, visited: false, updatedAt: null };
       rows.forEach(row => {
         try {
           const value = JSON.parse(row.text || '');
@@ -66,6 +66,7 @@
             state.preferences[author] = value.preference;
           }
           if (value.seenAt) state.seenAt = value.seenAt;
+          if (typeof value.visited === 'boolean') state.visited = value.visited;
           if (value.updatedAt) state.updatedAt = value.updatedAt;
         } catch {}
       });
@@ -91,6 +92,7 @@
     if (active === 'garage') ok = h.garage;
     if (active === 'garden') ok = h.garden;
     if (active === '3bed') ok = h.beds >= 3;
+    if (active === 'visited') ok = houseState(h).visited === true;
     const s = statusFilter.value;
     if (s === 'unrated') ok = ok && !preference(h, stateAuthor());
     else if (s === 'new') ok = ok && isNew(h);
@@ -261,8 +263,10 @@
 
   function cardHtml(h) {
     const newBadge = isNew(h) ? '<span class="new-badge">NEW</span>' : '';
+    const visited = houseState(h).visited === true;
+    const visitButton = `<button type="button" data-visited="${h.id}" aria-pressed="${visited}" class="visit-toggle${visited ? ' selected' : ''}">${visited ? '☑ Visitata' : '☐ Visitata'}</button>`;
     const addedChip = h.addedAt ? `<span class="chip">Aggiunta ${formatDate(h.addedAt, false)}</span>` : '';
-    return `<div style="display:flex;justify-content:space-between;gap:12px"><div><div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap"><h2>${h.name}</h2>${newBadge}</div><div class="meta">${h.type} · ${h.sqm}</div></div><div class="price">${euro(h.price)}</div></div><div class="chips">${h.tags.map(t => `<span class="chip">${t}</span>`).join('')}<span class="chip rating">${h.rating}</span>${addedChip}</div><div class="note">${h.note}</div><div class="warning" style="font-size:12px;margin-top:8px">${h.warning || ''}</div><div class="reactions"><div class="reactions-title">Le vostre impressioni</div>${reactionRow(h, 'Bogdan')}${reactionRow(h, 'Camilla')}</div><div class="actions"><a class="secondary" href="#map" data-map="${h.id}">Mappa</a>${h.url ? `<a class="primary" href="${h.url}" target="_blank" rel="noopener" data-open-home="${h.id}">Annuncio</a>` : `<span class="secondary" style="opacity:.55;cursor:not-allowed">Annuncio non disponibile</span>`}<button class="secondary" type="button" data-add-note="${h.id}">＋ Nota</button></div><div class="user-notes"><div class="user-notes-title"><span>Note vostre</span><span>${visibleNotes(h.id).length}</span></div><div class="note-list" data-notes-for="${h.id}"></div></div>`;
+    return `<div style="display:flex;justify-content:space-between;gap:12px"><div><div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap"><h2>${h.name}</h2>${newBadge}</div><div class="meta">${h.type} · ${h.sqm}</div></div><div class="price">${euro(h.price)}</div></div>${visitButton}<div class="chips">${h.tags.map(t => `<span class="chip">${t}</span>`).join('')}<span class="chip rating">${h.rating}</span>${addedChip}</div><div class="note">${h.note}</div><div class="warning" style="font-size:12px;margin-top:8px">${h.warning || ''}</div><div class="reactions"><div class="reactions-title">Le vostre impressioni</div>${reactionRow(h, 'Bogdan')}${reactionRow(h, 'Camilla')}</div><div class="actions"><a class="secondary" href="#map" data-map="${h.id}">Mappa</a>${h.url ? `<a class="primary" href="${h.url}" target="_blank" rel="noopener" data-open-home="${h.id}">Annuncio</a>` : `<span class="secondary" style="opacity:.55;cursor:not-allowed">Annuncio non disponibile</span>`}<button class="secondary" type="button" data-add-note="${h.id}">＋ Nota</button></div><div class="user-notes"><div class="user-notes-title"><span>Note vostre</span><span>${visibleNotes(h.id).length}</span></div><div class="note-list" data-notes-for="${h.id}"></div></div>`;
   }
 
   function render() {
@@ -310,6 +314,7 @@
       }, 100);
     }));
     sections.querySelectorAll('[data-add-note]').forEach(b => b.addEventListener('click', () => openNoteDialog(b.dataset.addNote)));
+    sections.querySelectorAll('[data-visited]').forEach(b => b.addEventListener('click', () => setVisited(b.dataset.visited)));
     sections.querySelectorAll('[data-pref]').forEach(b => b.addEventListener('click', () => setPreference(b.dataset.pref, b.dataset.prefAuthor, b.dataset.prefValue)));
   }
 
@@ -362,6 +367,23 @@
       sharedStates[homeId] = { ...current, preferences: prefs };
       render();
       alert('Non sono riuscito a salvare la valutazione. Riprova tra poco.');
+    }
+  }
+
+  async function setVisited(homeId) {
+    const h = homes.find(x => x.id === homeId);
+    if (!h) return;
+    const state = sharedStates[homeId] || { preferences: {} };
+    const previous = state.visited === true;
+    const visited = !previous;
+    sharedStates[homeId] = { ...state, visited, updatedAt: new Date().toISOString() };
+    render();
+    try {
+      await saveStateEvent(homeId, stateAuthor(), { visited, updatedAt: new Date().toISOString() });
+    } catch {
+      sharedStates[homeId] = { ...state };
+      render();
+      alert('Impossibile salvare la visita sul NAS. Riprova.');
     }
   }
 
