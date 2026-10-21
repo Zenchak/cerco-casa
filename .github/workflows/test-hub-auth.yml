@@ -1,0 +1,19 @@
+name: Verifica separazione profili Hub
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'server.js'
+      - 'scripts/test-auth-profiles.js'
+      - '.github/workflows/test-hub-auth.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verifica autenticazione e accesso ai dati
+        run: node scripts/test-auth-profiles.js
