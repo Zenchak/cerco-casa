@@ -558,14 +558,18 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (u.pathname === '/api/notes' && req.method === 'GET') {
+      const session = verifySession(req);
+      if (!session) return sendJson(res, 401, { error: 'Login richiesto' });
       return sendJson(res, 200, readJson(NOTES_FILE, {}));
     }
     if (u.pathname === '/api/notes' && req.method === 'POST') {
+      const session = verifySession(req);
+      if (!session) return sendJson(res, 401, { error: 'Login richiesto' });
       const payload = parseBody(req, await getBody(req));
       const homeId = String(payload.homeId || '').trim().slice(0, 120);
-      const author = String(payload.author || '').trim().slice(0, 40);
+      const author = session.user;
       const text = String(payload.text || '').trim().slice(0, 1000);
-      if (!homeId || !text || !['Bogdan', 'Camilla'].includes(author)) return sendJson(res, 400, { error: 'Dati nota non validi' });
+      if (!homeId || !text) return sendJson(res, 400, { error: 'Dati nota non validi' });
       const notes = readJson(NOTES_FILE, {});
       if (!Array.isArray(notes[homeId])) notes[homeId] = [];
       notes[homeId].push({ author, text, createdAt: new Date().toISOString() });
