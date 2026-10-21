@@ -14,6 +14,12 @@ const SLOTS = Object.freeze([
   'sport-running','sport-bike','sport-swim','sport-trail','sport-walk','sport-gym'
 ]);
 const SLOT_SET = new Set(SLOTS);
+// Solo Bogdan gestisce le immagini associate alle proprie aree private.
+const BOGDAN_SLOTS = new Set([
+  'home-allenamenti','home-finanze','home-gare',
+  'sport-running','sport-bike','sport-swim','sport-trail','sport-walk','sport-gym'
+]);
+const mayAccess=(user,slot)=>user.user==='Bogdan'||!BOGDAN_SLOTS.has(slot);
 const MAX_BYTES = 8 * 1024 * 1024;
 const ALLOWED_TYPES = {
   'image/png': {ext:'png', test:b=>b.length>8 && b.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10]))},
@@ -71,14 +77,15 @@ module.exports=function createMediaHandler({dataDir,verifySession}){
    const m=manifest();
    if(u.pathname==='/api/media/' && req.method==='GET'){
      const items={};
-     for(const slot of SLOTS)if(m[slot])items[slot]=active(m[slot],slot);
-     send(res,200,{ok:true,slots:SLOTS,items});
+     for(const slot of SLOTS)if(mayAccess(user,slot)&&m[slot])items[slot]=active(m[slot],slot);
+     send(res,200,{ok:true,slots:SLOTS.filter(slot=>mayAccess(user,slot)),items});
      return true;
    }
    const fileMatch=/^\/media-file\/([a-z0-9-]+)$/.exec(u.pathname);
    if(fileMatch&&req.method==='GET'){
      const slot=fileMatch[1],entry=m[slot];
      if(!SLOT_SET.has(slot)||!entry||!entry.file){send(res,404,{error:'Immagine non trovata'});return true}
+     if(!mayAccess(user,slot)){send(res,403,{error:'Immagine riservata a un altro profilo'});return true}
      const file=path.join(dir,path.basename(entry.file));
      try{
        const stat=fs.statSync(file);
@@ -100,6 +107,7 @@ module.exports=function createMediaHandler({dataDir,verifySession}){
      send(res,404,{error:'Risorsa media sconosciuta'});return true;
    }
    const slot=slotMatch[1];
+   if(!mayAccess(user,slot)){send(res,403,{error:'Questo profilo non può modificare l’immagine'});return true}
    if(!['POST','DELETE'].includes(req.method)){send(res,405,{error:'Metodo non consentito'});return true}
    // L'intestazione custom impedisce richieste CSRF tramite form HTML cross-site.
    if(req.headers['x-zenchak-media']!=='1'||!validOrigin(req)){
