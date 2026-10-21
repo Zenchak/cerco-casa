@@ -8,7 +8,7 @@ const createMediaHandler=require('../icon-media');
 
 (async()=>{
  const dataDir=fs.mkdtempSync(path.join(os.tmpdir(),'zenchak-media-test-'));
- const handler=createMediaHandler({dataDir,verifySession:req=>req.headers.cookie==='session=ok'?{user:'Bogdan'}:null});
+ const handler=createMediaHandler({dataDir,verifySession:req=>req.headers.cookie==='session=ok'?{user:'Bogdan'}:req.headers.cookie==='session=camilla'?{user:'Camilla'}:null});
  const server=http.createServer(async(req,res)=>{try{
   const ok=await handler(req,res,new URL(req.url,'http://localhost'));
   if(!ok){res.writeHead(404);res.end()}
@@ -35,6 +35,18 @@ const createMediaHandler=require('../icon-media');
   assert.deepEqual(Buffer.from(await file.arrayBuffer()),gif);
   const list=await fetch(base+'/api/media/',{headers:auth}).then(x=>x.json());
   assert.ok(list.items['home-auto']);
+  const privateUpload=await fetch(base+'/api/media/home-allenamenti',{method:'POST',headers:{...auth,'Content-Type':'image/gif','X-Zenchak-Media':'1',Origin:base},body:gif});
+  assert.equal(privateUpload.status,200);
+  const privateInfo=await privateUpload.json();
+  const camillaHeaders={Cookie:'session=camilla'};
+  const camillaList=await fetch(base+'/api/media/',{headers:camillaHeaders}).then(x=>x.json());
+  assert.ok(!camillaList.slots.includes('home-allenamenti'));
+  assert.ok(!camillaList.items['home-allenamenti']);
+  assert.ok(camillaList.slots.includes('home-auto'));
+  assert.equal((await fetch(base+privateInfo.item.url,{headers:camillaHeaders})).status,403);
+  assert.equal((await fetch(base+'/api/media/home-allenamenti',{method:'DELETE',headers:{...camillaHeaders,'X-Zenchak-Media':'1',Origin:base}})).status,403);
+  const privateReset=await fetch(base+'/api/media/home-allenamenti',{method:'DELETE',headers:{...auth,'X-Zenchak-Media':'1',Origin:base}});
+  assert.equal(privateReset.status,200);
   const reset=await fetch(base+'/api/media/home-auto',{method:'DELETE',headers:{...auth,'X-Zenchak-Media':'1',Origin:base}});
   assert.equal(reset.status,200);
   const gone=await fetch(base+'/media-file/home-auto',{headers:auth});
