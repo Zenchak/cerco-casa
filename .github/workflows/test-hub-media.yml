@@ -1,0 +1,20 @@
+name: Verifica media Hub
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'icon-media.js'
+      - 'server.js'
+      - 'scripts/test-icon-media.js'
+      - '.github/workflows/test-hub-media.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Smoke test API media
+        run: node scripts/test-icon-media.js
