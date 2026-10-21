@@ -290,6 +290,16 @@ function setNoStore(res) {
 async function handleHubAuth(req, res, u) {
   if (!u.pathname.startsWith('/auth/')) return false;
 
+  // Server-side authorization for private areas, independent of local storage.
+  if (/^\/auth\/check\/(bogdan|camilla)$/.test(u.pathname) && req.method === 'GET') {
+    const required = normalizeHubUser(u.pathname.split('/').pop());
+    const session = verifySession(req);
+    const status = !session ? 401 : session.user === required ? 204 : 403;
+    res.writeHead(status, { 'cache-control': 'private, no-store', 'vary': 'Cookie' });
+    res.end();
+    return true;
+  }
+
   if (u.pathname === '/auth/check' && req.method === 'GET') {
     const session = verifySession(req);
     if (!session) { res.writeHead(401, { 'cache-control': 'no-store' }); res.end(); return true; }
@@ -306,29 +316,25 @@ async function handleHubAuth(req, res, u) {
     return true;
   }
 
-  if (u.pathname === '/auth/bootstrap' && (req.method === 'POST' || req.method === 'GET')) {
-    const trusted = String(req.headers['x-auth-fallback'] || '') === '1';
-    const user = normalizeHubUser(req.headers['x-auth-user']);
-    if (!trusted || !user) { sendJson(res, 403, { error: 'Bootstrap non autorizzato' }); return true; }
+  // Passwords are verified by nginx auth_basic against the user's htpasswd.
+  // The ordinary /auth/ proxy explicitly strips all X-Auth-* trust headers.
+  if (u.pathname === '/auth/password-login' && req.method === 'POST') {
+    const target = normalizeHubUser(req.headers['x-auth-target']);
+    const proven = normalizeHubUser(req.headers['x-auth-user']);
+    const trusted = req.headers['x-auth-password-login'] === '1';
+    const confirmed = req.headers['x-zenchak-login'] === '1';
+    const { origin } = rpContext(req);
+    const requestOrigin = String(req.headers.origin || '');
+    if (!trusted || !confirmed || !target || proven !== target || (requestOrigin && requestOrigin !== origin)) {
+      sendJson(res, 403, { error: 'Accesso non autorizzato' });
+      return true;
+    }
     res.writeHead(200, {
       'content-type': 'application/json; charset=utf-8',
       'cache-control': 'no-store',
-      'set-cookie': sessionCookie(user)
+      'set-cookie': sessionCookie(target)
     });
-    res.end(JSON.stringify({ ok: true, user }));
-    return true;
-  }
-
-  if (u.pathname === '/auth/fallback' && req.method === 'GET') {
-    const trusted = String(req.headers['x-auth-fallback'] || '') === '1';
-    const user = normalizeHubUser(req.headers['x-auth-user']);
-    if (!trusted || !user) { sendJson(res, 403, { error: 'Fallback non autorizzato' }); return true; }
-    res.writeHead(302, {
-      'set-cookie': sessionCookie(user),
-      'cache-control': 'no-store',
-      'location': '/'
-    });
-    res.end();
+    res.end(JSON.stringify({ ok: true, user: target }));
     return true;
   }
 
