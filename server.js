@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const createMediaHandler = require('./icon-media');
 const { processPendingSuggestions } = require('./suggestion-processor');
 
 const PORT = process.env.PORT || 3000;
@@ -531,10 +532,13 @@ function processHouseQueue() {
   return processPendingSuggestions({ dataDir: DATA_DIR, token: GITHUB_TOKEN, repo: GITHUB_REPO, branch: GITHUB_BRANCH });
 }
 
+const handleMedia = createMediaHandler({ dataDir: DATA_DIR, verifySession });
+
 const server = http.createServer(async (req, res) => {
   const u = new URL(req.url, 'http://localhost');
   try {
     if (await handleHubAuth(req, res, u)) return;
+    if (await handleMedia(req, res, u)) return;
 
     if (u.pathname === '/health') {
       const processingErrors = readJson(path.join(DATA_DIR, 'suggestion-processing-errors.json'), []);
