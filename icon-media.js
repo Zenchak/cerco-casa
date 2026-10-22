@@ -19,7 +19,7 @@ const BOGDAN_SLOTS = new Set([
   'home-allenamenti','home-finanze','home-gare',
   'sport-running','sport-bike','sport-swim','sport-trail','sport-walk','sport-gym'
 ]);
-const mayAccess=(user,slot)=>slot==='profile-bogdan'?user.user==='Bogdan':slot==='profile-camilla'?user.user==='Camilla':user.user==='Bogdan'||!BOGDAN_SLOTS.has(slot);
+const mayAccess=(user,slot)=>user.user==='Bogdan'||(slot==='profile-bogdan'?false:slot==='profile-camilla'?user.user==='Camilla':!BOGDAN_SLOTS.has(slot));
 const MAX_BYTES = 8 * 1024 * 1024;
 const ALLOWED_TYPES = {
   'image/png': {ext:'png', test:b=>b.length>8 && b.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10]))},
