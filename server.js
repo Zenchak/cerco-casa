@@ -8,6 +8,7 @@ const { processPendingSuggestions } = require('./suggestion-processor');
 const PORT = process.env.PORT || 3000;
 const DATA_DIR = process.env.DATA_DIR || '/data';
 const NOTES_FILE = path.join(DATA_DIR, 'notes.json');
+const TRAVEL_FILE = path.join(DATA_DIR, 'travel-wishlist.json');
 const SUGGESTIONS_FILE = path.join(DATA_DIR, 'suggestions.json');
 const GITHUB_SYNC_FILE = path.join(DATA_DIR, 'github-synced-suggestions.json');
 function loadGithubToken() {
@@ -557,6 +558,27 @@ const server = http.createServer(async (req, res) => {
       });
     }
 
+
+    if (u.pathname === '/api/travel-wishlist' && req.method === 'GET') {
+      if (!verifySession(req)) return sendJson(res, 401, { error: 'Login richiesto' });
+      return sendJson(res, 200, { ok: true, items: readJson(TRAVEL_FILE, []) });
+    }
+    if (u.pathname === '/api/travel-wishlist' && req.method === 'PUT') {
+      if (!verifySession(req)) return sendJson(res, 401, { error: 'Login richiesto' });
+      const body = parseBody(req, await getBody(req, 512 * 1024));
+      if (!Array.isArray(body.items) || body.items.length > 500) return sendJson(res, 400, { error: 'Lista non valida' });
+      const items = body.items.map(p => ({
+        id: String(p.id || '').slice(0, 90),
+        place: String(p.place || '').trim().slice(0, 110),
+        country: String(p.country || '').slice(0, 100),
+        notes: String(p.notes || '').slice(0, 1000),
+        status: ['desiderio','programmato','visitato'].includes(p.status) ? p.status : 'desiderio',
+        lat: typeof p.lat === 'number' && Number.isFinite(p.lat) && Math.abs(p.lat) <= 90 ? p.lat : null,
+        lon: typeof p.lon === 'number' && Number.isFinite(p.lon) && Math.abs(p.lon) <= 180 ? p.lon : null
+      })).filter(p => p.id && p.place);
+      writeJson(TRAVEL_FILE, items);
+      return sendJson(res, 200, { ok: true, items });
+    }
     if (u.pathname === '/api/notes' && req.method === 'GET') {
       const session = verifySession(req);
       if (!session) return sendJson(res, 401, { error: 'Login richiesto' });
