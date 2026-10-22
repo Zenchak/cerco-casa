@@ -572,6 +572,8 @@ const server = http.createServer(async (req, res) => {
         place: String(p.place || '').trim().slice(0, 110),
         country: String(p.country || '').slice(0, 100),
         notes: String(p.notes || '').slice(0, 1000),
+        bestTime: String(p.bestTime || '').slice(0, 250),
+        highlights: String(p.highlights || '').slice(0, 500),
         status: ['desiderio','programmato','visitato'].includes(p.status) ? p.status : 'desiderio',
         lat: typeof p.lat === 'number' && Number.isFinite(p.lat) && Math.abs(p.lat) <= 90 ? p.lat : null,
         lon: typeof p.lon === 'number' && Number.isFinite(p.lon) && Math.abs(p.lon) <= 180 ? p.lon : null
