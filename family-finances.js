@@ -20,6 +20,31 @@ module.exports=function createFamilyFinance({dataDir,verifySession}){
   if(req.headers['x-zenchak-family']!=='1'||!sameOrigin(req)){send(res,403,{error:'Richiesta non autorizzata'});return true}
   const items=read();
   const id=u.pathname.split('/')[3];
+  if(req.method==='POST'&&id==='import'){
+   try{
+    if(user.user!=='Bogdan')return send(res,403,{error:'Importazione riservata a Bogdan'}),true;
+    let size=0,parts=[];
+    for await(const chunk of req){size+=chunk.length;if(size>500000)throw Error('Archivio troppo grande');parts.push(chunk)}
+    const data=JSON.parse(Buffer.concat(parts).toString('utf8'));
+    if(data.format!=='zenchak-family-finances-v1'||!Array.isArray(data.items)||data.items.length>2000)throw Error('Formato archivio non valido');
+    const existing=new Set(items.map(x=>x.id));
+    let added=0;
+    for(const x of data.items){
+      const id=String(x.id||'');
+      const date=String(x.date||'');
+      const type=String(x.type||'');
+      const amount=Number(x.amount);
+      const description=String(x.description||'').trim().slice(0,180);
+      const category=String(x.category||'');
+      if(!/^ing-[a-f0-9]{24}$/.test(id)||!validDate(date)||!['expense','income'].includes(type)||!Number.isFinite(amount)||amount<=0||amount>1000000||!description||!allowedCategories.includes(category))throw Error('Movimento non valido nel file');
+    }
+    if(items.length+data.items.length>10000)throw Error('Archivio troppo grande');
+    for(const x of data.items){if(existing.has(x.id))continue;items.push({id:x.id,date:x.date,type:x.type,amount:x.amount,description:x.description,category:x.category,source:x.source,createdBy:'Importazione ING',updatedBy:user.user,createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()});existing.add(x.id);added++}
+    if(added)save(items);
+    send(res,200,{ok:true,added,skipped:data.items.length-added,total:items.length});
+   }catch(e){send(res,400,{error:e.message||'Importazione non riuscita'})}
+   return true;
+  }
   if(req.method==='DELETE'){
    if(!id||!items.some(x=>x.id===id)){send(res,404,{error:'Movimento non trovato'});return true}
    save(items.filter(x=>x.id!==id));send(res,200,{ok:true});return true;
