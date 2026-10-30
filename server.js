@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const createMediaHandler = require('./icon-media');
+const createFamilyFinance = require('./family-finances');
 const { processPendingSuggestions } = require('./suggestion-processor');
 
 const PORT = process.env.PORT || 3000;
@@ -20,7 +21,7 @@ const GITHUB_TOKEN = loadGithubToken();
 const GITHUB_REPO = String(process.env.GITHUB_REPO || 'Zenchak/cerco-casa').trim();
 const GITHUB_BRANCH = String(process.env.GITHUB_BRANCH || 'main').trim();
 const LEGACY_NOTES_URL = 'https://cerco-casa-bogdan-camilla.netlify.app/api/notes';
-const WATCH_FILES = [__filename, path.join(__dirname, 'suggestion-processor.js')];
+const WATCH_FILES = [__filename, path.join(__dirname, 'suggestion-processor.js'), path.join(__dirname, 'family-finances.js'), path.join(__dirname, 'icon-media.js')];
 const START_MTIMES = new Map(WATCH_FILES.map(f => [f, (() => { try { return fs.statSync(f).mtimeMs; } catch { return 0; } })()]));
 
 fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -541,11 +542,13 @@ function processHouseQueue() {
 
 const handleMedia = createMediaHandler({ dataDir: DATA_DIR, verifySession });
 
+const handleFamilyFinance=createFamilyFinance({dataDir:DATA_DIR,verifySession});
 const server = http.createServer(async (req, res) => {
   const u = new URL(req.url, 'http://localhost');
   try {
     if (await handleHubAuth(req, res, u)) return;
     if (await handleMedia(req, res, u)) return;
+    if (await handleFamilyFinance(req, res, u)) return;
 
     if (u.pathname === '/health') {
       const processingErrors = readJson(path.join(DATA_DIR, 'suggestion-processing-errors.json'), []);
