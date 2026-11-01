@@ -112,14 +112,6 @@
   document.head.appendChild(style);
 
   function applyProfile(){
-    const sub=document.querySelector('header .sub');
-    if(sub&&!document.getElementById('activeProfileBadge')){
-      const badge=document.createElement('div');
-      badge.id='activeProfileBadge';
-      badge.className='profile-badge';
-      badge.textContent=(activeProfile==='Camilla'?'👩 ':'👨 ')+activeProfile;
-      sub.insertAdjacentElement('afterend',badge);
-    }
     document.querySelectorAll('[data-pref-author]').forEach(btn=>{
       const mine=btn.dataset.prefAuthor===activeProfile;
       btn.disabled=!mine;
