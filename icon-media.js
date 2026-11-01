@@ -11,7 +11,7 @@ const crypto = require('crypto');
 const SLOTS = Object.freeze([
   'home-logo','home-viaggi','home-allenamenti','home-casa','home-finanze','home-auto','home-gare','home-salute','home-finanze-familiari',
   'auto-kia','auto-fiat','profile-bogdan','profile-camilla',
-  'sport-running','sport-bike','sport-swim','sport-trail','sport-walk','sport-gym','viaggi-in-partenza','viaggi-mappa','viaggi-elenco'
+  'sport-running','sport-bike','sport-swim','sport-trail','sport-walk','sport-gym','viaggi-in-partenza','viaggi-mappa','viaggi-elenco','ui-home','ui-refresh'
 ]);
 const SLOT_SET = new Set(SLOTS);
 // Solo Bogdan gestisce le immagini associate alle proprie aree private.
